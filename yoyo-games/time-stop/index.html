@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Time Stop — YoYo Games</title>
-<meta name="description" content="Time Stop: a party game for 1–5 players. Stop the hidden timer as close as you can to the target time. Closest player wins the round.">
+<meta name="description" content="Time Stop: a party game for 1–5 players. Stop the timer as close as you can to the target time — with the clock showing or hidden. Closest player wins the round.">
 <link rel="canonical" href="https://ahmad-almazeedi.github.io/yoyo-games/time-stop/">
 <style>
 :root {
@@ -79,7 +79,20 @@ h2 { font-size: 1rem; text-transform: uppercase; letter-spacing: 0.08em; color: 
 .target { text-align: center; margin: 1.25rem 0; }
 .target .label { color: var(--muted); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; }
 .target .value { font-size: 3.4rem; font-weight: 800; line-height: 1.1; color: var(--accent); font-variant-numeric: tabular-nums; }
-.who { text-align: center; font-size: 1.35rem; font-weight: 700; margin: 0 0 1rem; }
+.who { text-align: center; font-size: 1.35rem; font-weight: 700; margin: 0 0 0.5rem; }
+.clock {
+  text-align: center;
+  font-size: 2.6rem;
+  font-weight: 800;
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums;
+  margin: 0 0 0.75rem;
+  min-height: 2.9rem;
+}
+.clock.idle { color: var(--muted); opacity: 0.45; }
+.clock.live { color: var(--text); }
+.clock.blind { color: var(--muted); letter-spacing: 0.3em; font-size: 2rem; }
+.clock.done { color: var(--accent); }
 .pad {
   width: min(100%, 15rem);
   aspect-ratio: 1 / 1;
@@ -120,7 +133,7 @@ tr.winner td { color: var(--accent); font-weight: 700; }
 <div class="wrap">
 <header>
   <h1>Time <span class="stop">Stop</span></h1>
-  <p class="tag">Stop the hidden timer on the target. Closest player takes the round.</p>
+  <p class="tag">Stop the timer on the target. Closest player takes the round.</p>
 </header>
 
 <main class="card">
@@ -134,6 +147,10 @@ tr.winner td { color: var(--accent); font-weight: 700; }
     <div class="field">
       <h2>Rounds</h2>
       <div class="choices" id="roundChoices"></div>
+    </div>
+    <div class="field">
+      <h2>Clock while running</h2>
+      <div class="choices" id="clockChoices"></div>
     </div>
     <button class="btn primary" id="startGame">Start game</button>
     <p class="hint" id="setupHint"></p>
@@ -154,6 +171,7 @@ tr.winner td { color: var(--accent); font-weight: 700; }
   <section class="screen" id="play" hidden>
     <div class="roundbar"><span id="playRound"></span><span id="playTarget"></span></div>
     <p class="who" id="playWho"></p>
+    <p class="clock idle" id="clock">0.00s</p>
     <button class="pad" id="pad">Start</button>
     <p class="hint" id="playHint">Press Start, then press again when you think the time is up.</p>
   </section>
@@ -208,7 +226,7 @@ tr.winner td { color: var(--accent); font-weight: 700; }
   var COLORS = ["var(--p1)", "var(--p2)", "var(--p3)", "var(--p4)", "var(--p5)"];
   var SOLO_HIT = 0.5; // solo mode scores a point when within half a second
 
-  var config = { players: 2, rounds: 10 };
+  var config = { players: 2, rounds: 10, clock: "show" };
   var game = null;
 
   var $ = function (id) { return document.getElementById(id); };
@@ -220,6 +238,7 @@ tr.winner td { color: var(--accent); font-weight: 700; }
   };
 
   function show(name) {
+    if (name !== "play") stopClock();
     screens.forEach(function (s) { $(s).hidden = (s !== name); });
     // move focus off the button that was just hidden, so the keyboard keeps working
     var primary = $(PRIMARY[name]);
@@ -235,13 +254,15 @@ tr.winner td { color: var(--accent); font-weight: 700; }
 
   /* ---------- setup screen ---------- */
 
-  function buildChoices(el, values, key, suffix) {
+  function buildChoices(el, values, key) {
     el.innerHTML = "";
-    values.forEach(function (v) {
+    values.forEach(function (item) {
+      var v = (item && item.value !== undefined) ? item.value : item;
+      var label = (item && item.label !== undefined) ? item.label : String(item);
       var b = document.createElement("button");
       b.type = "button";
       b.className = "choice";
-      b.textContent = String(v) + (suffix || "");
+      b.textContent = label;
       b.setAttribute("aria-pressed", String(config[key] === v));
       b.addEventListener("click", function () {
         config[key] = v;
@@ -254,13 +275,21 @@ tr.winner td { color: var(--accent); font-weight: 700; }
   }
 
   function updateHint() {
-    $("setupHint").textContent = config.players === 1
+    var who = config.players === 1
       ? "Solo practice: score a point each round you land within " + fmt(SOLO_HIT) + "s of the target."
       : config.players + " players take turns on the same device, " + config.rounds + " rounds.";
+    var clock = config.clock === "show"
+      ? " The clock is visible while it runs."
+      : " The clock is hidden while it runs — pure instinct.";
+    $("setupHint").textContent = who + clock;
   }
 
   buildChoices($("playerChoices"), [1, 2, 3, 4, 5], "players");
   buildChoices($("roundChoices"), [10, 15, 20], "rounds");
+  buildChoices($("clockChoices"), [
+    { value: "show", label: "Show" },
+    { value: "hide", label: "Hide" }
+  ], "clock");
   updateHint();
 
   /* ---------- game state ---------- */
@@ -316,10 +345,27 @@ tr.winner td { color: var(--accent); font-weight: 700; }
 
   var running = false;
   var startedAt = 0;
+  var rafId = 0;
+
+  function setClock(state, text) {
+    var el = $("clock");
+    el.className = "clock " + state;
+    el.textContent = text;
+  }
+
+  function tickClock() {
+    setClock("live", fmt((performance.now() - startedAt) / 1000) + "s");
+    rafId = requestAnimationFrame(tickClock);
+  }
+
+  function stopClock() {
+    if (rafId) { cancelAnimationFrame(rafId); rafId = 0; }
+  }
 
   function showPlay() {
     var p = game.players[game.turn];
     running = false;
+    stopClock();
     $("playRound").textContent = "Round " + game.round + "/" + game.totalRounds;
     $("playTarget").textContent = "Target " + fmt(game.target) + "s";
     $("playWho").innerHTML = dot(p.index) + p.name;
@@ -327,6 +373,7 @@ tr.winner td { color: var(--accent); font-weight: 700; }
     pad.textContent = "Start";
     pad.className = "pad";
     pad.disabled = false;
+    setClock("idle", "0.00s");
     $("playHint").textContent = "Press Start, then press again when you think " + fmt(game.target) + "s has passed.";
     show("play");
   }
@@ -338,10 +385,18 @@ tr.winner td { color: var(--accent); font-weight: 700; }
       var pad = $("pad");
       pad.textContent = "Stop";
       pad.className = "pad stopping";
-      $("playHint").textContent = "No clock, no counting aids — trust your gut.";
+      if (config.clock === "show") {
+        tickClock();
+        $("playHint").textContent = "Stop it as close to " + fmt(game.target) + "s as you can.";
+      } else {
+        setClock("blind", "\u2022 \u2022 \u2022");
+        $("playHint").textContent = "No clock — trust your gut.";
+      }
     } else {
       var elapsed = (performance.now() - startedAt) / 1000;
       running = false;
+      stopClock();
+      setClock("done", fmt(elapsed) + "s");
       $("pad").disabled = true;
       recordTurn(elapsed);
     }
