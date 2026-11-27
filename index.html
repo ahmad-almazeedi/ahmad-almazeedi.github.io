@@ -49,21 +49,34 @@ h1 { margin: 0; display: flex; flex-wrap: wrap; align-items: baseline; justify-c
 h1 .ar { font-family: "Baloo Bhaijaan 2", var(--font); font-weight: 800; font-size: .72em; letter-spacing: 0; line-height: 1.2; color: var(--accent); }
 .line { margin: 1.5rem 0 0; font-weight: 700; font-size: clamp(1.3rem, 2.4vw, 1.75rem); line-height: 1.3; color: var(--soft); letter-spacing: -0.01em; }
 
-.apps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(2rem, 3.5vw, 3rem) clamp(.875rem, 1.6vw, 1.25rem); }
-.apps a { display: grid; gap: 1.1rem; }
+.intro { max-width: 34rem; margin: 0 0 clamp(3rem, 8vh, 5rem); font-size: 1.1875rem; font-weight: 600; color: var(--soft); }
+.intro strong { color: var(--ink); font-weight: 800; }
+
+.apps { list-style: none; margin: 0; padding: 0; display: grid; gap: clamp(4rem, 10vh, 7rem); }
+.app { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: clamp(2rem, 5vw, 4.5rem); align-items: center; }
+.app:nth-child(even) .tile { order: 2; }
 .tile { position: relative; display: grid; place-items: center; aspect-ratio: 5 / 4; border-radius: 2.25rem; overflow: hidden; background: var(--tile); isolation: isolate; }
 .tile .glow { position: absolute; inset: -30%; width: 160%; height: 160%; object-fit: cover; filter: blur(80px) saturate(2.2) brightness(var(--lift)); opacity: var(--glow); z-index: -1; }
-.tile .icon { width: 46%; height: auto; aspect-ratio: 1; border-radius: 23%; box-shadow: 0 0 0 1px rgba(255,255,255,.06), 0 40px 80px -30px rgba(0,0,0,.55); }
+.tile .icon { width: 44%; height: auto; aspect-ratio: 1; border-radius: 23%; box-shadow: 0 0 0 1px rgba(255,255,255,.06), 0 40px 80px -30px rgba(0,0,0,.55); }
 .tile.emoji { background: radial-gradient(60% 70% at 50% 50%, rgba(56,132,255,var(--emoji-glow)), transparent 75%), var(--tile); }
-.tile.emoji .icon { width: auto; aspect-ratio: auto; border-radius: 0; box-shadow: none; font-size: clamp(6rem, 17vw, 13rem); line-height: 1; font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif; filter: drop-shadow(0 30px 40px rgba(0,0,0,.35)); }
-.cap { display: flex; align-items: baseline; gap: .75rem; padding-inline: .35rem; }
-.cap b { font-weight: var(--heavy); font-size: 1.5rem; letter-spacing: -0.02em; }
-.cap span { margin-inline-start: auto; color: var(--soft); font-weight: 700; }
+.tile.emoji .icon { width: auto; aspect-ratio: auto; border-radius: 0; box-shadow: none; font-size: clamp(6rem, 15vw, 12rem); line-height: 1; font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif; filter: drop-shadow(0 30px 40px rgba(0,0,0,.35)); }
+
+.about { display: grid; gap: 1rem; justify-items: start; }
+.meta { margin: 0; color: var(--soft); font-weight: 700; font-size: .9375rem; }
+.about h2 { margin: 0; font-weight: var(--heavy); font-size: clamp(2.25rem, 4.2vw, 3.25rem); line-height: 1; letter-spacing: -0.03em; }
+.tag { margin: 0; font-weight: 800; font-size: clamp(1.25rem, 2vw, 1.5rem); line-height: 1.3; letter-spacing: -0.01em; }
+.brief { margin: 0; max-width: 30rem; color: var(--soft); font-weight: 600; font-size: 1.0625rem; line-height: 1.6; }
+.brief a { color: inherit; text-decoration: underline; text-underline-offset: .2em; }
+.open { margin-top: .5rem; display: inline-flex; align-items: center; gap: .5rem; padding: .75rem 1.25rem; border-radius: 999px; background: var(--ink); color: var(--bg); font-weight: 800; font-size: .9688rem; }
 
 .foot { margin-top: auto; padding-block: 4.5rem 2rem; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; color: var(--soft); font-weight: 600; }
 .foot nav { display: flex; gap: 1.75rem; }
 .foot a:hover { color: var(--ink); }
 
+@media (max-width: 52rem) {
+  .app { grid-template-columns: 1fr; gap: 1.5rem; }
+  .app:nth-child(even) .tile { order: 0; }
+}
 @media (max-width: 44rem) {
   .apps { grid-template-columns: 1fr; }
   h1 { flex-direction: column; align-items: flex-start; }
@@ -90,23 +103,49 @@ h1 .ar { font-family: "Baloo Bhaijaan 2", var(--font); font-weight: 800; font-si
       <p class="line fade" style="--i:2">Useful and beautiful software, made for everyone.</p>
     </section>
 
+    <p class="intro fade" style="--i:2">I’m <strong>Ahmad</strong>, a software engineer in Kuwait. I design every product I make, and AI is part of how I build them. Here is what I’ve made so far.</p>
+
     <ul class="apps" aria-label="Work">
-      <li class="fade" style="--i:3"><a href="https://atmita.com/">
+      <li class="app fade" style="--i:3">
         <div class="tile"><img class="glow" src="/assets/icons/atmita.png" alt=""><img class="icon" src="/assets/icons/atmita.png" alt="" width="360" height="360"></div>
-        <div class="cap"><b>Atmita</b><span>AI agent</span></div>
-      </a></li>
-      <li class="fade" style="--i:4"><a href="https://apps.apple.com/us/app/haseba-calculator-converter/id1121281655">
+        <div class="about">
+          <p class="meta">Web</p>
+          <h2>Atmita</h2>
+          <p class="tag">Your personal AI agent.</p>
+          <p class="brief">Tell it what you need in plain words. It works across your apps and the browser, keeps going while you’re away, and remembers what matters to you.</p>
+          <a class="open" href="https://atmita.com/">Visit atmita.com <span aria-hidden="true">→</span></a>
+        </div>
+      </li>
+      <li class="app fade" style="--i:4">
         <div class="tile" style="--glow:.18"><img class="glow" src="/assets/icons/haseba.png" alt=""><img class="icon" src="/assets/icons/haseba.png" alt="" width="360" height="360"></div>
-        <div class="cap"><b>Haseba</b><span>1.3M downloads</span></div>
-      </a></li>
-      <li class="fade" style="--i:5"><a href="https://apps.apple.com/us/app/animath-ai-tutor-solver/id1615638274">
+        <div class="about">
+          <p class="meta">iPhone · since 2016</p>
+          <h2>Haseba</h2>
+          <p class="tag">A calculator done right.</p>
+          <p class="brief">Clean, fast and easy to read, with scientific functions, currencies and units, and ten themes. Downloaded 1.3 million times.</p>
+          <a class="open" href="https://apps.apple.com/us/app/haseba-calculator-converter/id1121281655">Get it on the App Store <span aria-hidden="true">→</span></a>
+        </div>
+      </li>
+      <li class="app fade" style="--i:5">
         <div class="tile"><img class="glow" src="/assets/icons/animath.png" alt=""><img class="icon" src="/assets/icons/animath.png" alt="" width="360" height="360"></div>
-        <div class="cap"><b>Animath</b><span>Algebra</span></div>
-      </a></li>
-      <li class="fade" style="--i:6"><a href="https://ilostcount.com/">
-        <div class="tile emoji"><span class="icon" role="img" aria-label="iLostCount">🔢</span></div>
-        <div class="cap"><b>iLostCount</b><span>Counter</span></div>
-      </a></li>
+        <div class="about">
+          <p class="meta">iPhone · since 2022</p>
+          <h2>Animath</h2>
+          <p class="tag">An AI tutor for algebra.</p>
+          <p class="brief">Snap or type a problem and it walks you through every step, then quizzes you so it sticks. The solver engine is <a href="https://github.com/ahmad-almazeedi/AnimathSolver">open source</a>.</p>
+          <a class="open" href="https://apps.apple.com/us/app/animath-ai-tutor-solver/id1615638274">Get it on the App Store <span aria-hidden="true">→</span></a>
+        </div>
+      </li>
+      <li class="app fade" style="--i:6">
+        <div class="tile emoji"><span class="icon" role="img" aria-label="">🔢</span></div>
+        <div class="about">
+          <p class="meta">Web · free</p>
+          <h2>iLostCount</h2>
+          <p class="tag">Count words, characters and AI tokens.</p>
+          <p class="brief">Paste any text and the counts update as you type. It runs in your browser, with no signup and nothing sent anywhere.</p>
+          <a class="open" href="https://ilostcount.com/">Visit ilostcount.com <span aria-hidden="true">→</span></a>
+        </div>
+      </li>
     </ul>
   </main>
 
