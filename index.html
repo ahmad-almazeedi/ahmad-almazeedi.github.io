@@ -6,38 +6,339 @@
 <title>Ahmad Almazeedi — projects</title>
 <meta name="description" content="Projects built by Ahmad Almazeedi: iLostCount (browser character, word and LLM token counter), Atmita, Animath and Haseba.">
 <link rel="canonical" href="https://ahmad-almazeedi.github.io/">
+<meta name="theme-color" content="#F4F6F5" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0B1112" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Ahmad Almazeedi">
+<meta property="og:description" content="Software engineer in Kuwait. I hold the design. AI writes the code.">
+<meta property="og:url" content="https://ahmad-almazeedi.github.io/">
+<meta property="og:image" content="https://ahmad-almazeedi.github.io/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="preload" href="/assets/fonts/newsreader.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
 <style>
-:root { color-scheme: light dark; }
-body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; max-width: 42rem; margin: 0 auto; padding: 2rem 1.25rem 4rem; }
-h1 { font-size: 1.6rem; margin-bottom: 0.25rem; }
-h2 { font-size: 1.1rem; margin: 2rem 0 0.25rem; }
-p { margin: 0.35rem 0; }
-a { color: #0b62d6; }
-.lede { opacity: 0.8; }
-footer { margin-top: 3rem; font-size: 0.9rem; opacity: 0.7; }
+@font-face { font-family: "Newsreader"; src: url("/assets/fonts/newsreader.woff2") format("woff2"); font-weight: 200 800; font-display: swap; }
+@font-face { font-family: "Inter"; src: url("/assets/fonts/inter.woff2") format("woff2"); font-weight: 100 900; font-display: swap; }
+@font-face { font-family: "Amiri Name"; src: url("/assets/fonts/amiri-name.woff2") format("woff2"); font-display: swap; }
+
+:root {
+  color-scheme: light dark;
+  --bg: #F4F6F5;
+  --ink: #0F1A1C;
+  --soft: #55666A;
+  --line: rgba(15, 26, 28, 0.11);
+  --wash: rgba(15, 26, 28, 0.045);
+  --accent: #0E6C7A;
+  --serif: "Newsreader", "Iowan Old Style", Georgia, serif;
+  --sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --pad: clamp(1.375rem, 5.5vw, 5rem);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0B1112;
+    --ink: #E9EFED;
+    --soft: #8C9D9E;
+    --line: rgba(233, 239, 237, 0.13);
+    --wash: rgba(233, 239, 237, 0.055);
+    --accent: #7FCBD5;
+  }
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 1.0625rem;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+a { color: inherit; text-decoration: none; }
+::selection { background: var(--accent); color: var(--bg); }
+
+.page {
+  max-width: 76rem;
+  margin: 0 auto;
+  padding: 0 var(--pad);
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Top line */
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  padding-block: clamp(1.25rem, 3vw, 2.25rem);
+  font-size: 0.9375rem;
+  color: var(--soft);
+}
+.top span { font-variant-numeric: tabular-nums; }
+
+/* Name, in both scripts */
+.name {
+  margin: 0;
+  padding-block: clamp(3rem, 11vh, 8rem) clamp(1.75rem, 4vh, 3rem);
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: clamp(3.1rem, 11.2vw, 9.25rem);
+  line-height: 0.94;
+  letter-spacing: -0.035em;
+  display: grid;
+  gap: 0.14em;
+}
+.name .latin { display: block; margin-inline-start: -0.04em; }
+.name .arabic {
+  display: block;
+  font-family: "Amiri Name", "Geeza Pro", "Noto Naskh Arabic", serif;
+  font-weight: 400;
+  font-size: 0.78em;
+  line-height: 1.3;
+  letter-spacing: 0;
+  text-align: right;
+  color: var(--accent);
+}
+
+.lede {
+  margin: 0;
+  max-width: 24em;
+  font-family: var(--serif);
+  font-weight: 350;
+  font-size: clamp(1.3rem, 2.3vw, 1.7rem);
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+
+/* Work */
+.work { margin-top: clamp(4rem, 13vh, 8.5rem); }
+.label {
+  margin: 0 0 0.75rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--soft);
+}
+.list { list-style: none; margin: 0; padding: 0; }
+.item {
+  position: relative;
+  display: grid;
+  grid-template-columns: 3.5rem minmax(0, 15rem) minmax(0, 1fr) 1.5rem;
+  column-gap: clamp(1.25rem, 3vw, 2.5rem);
+  align-items: start;
+  padding-block: 1.75rem;
+  border-top: 1px solid var(--line);
+}
+.item::before {
+  content: "";
+  position: absolute;
+  inset: 0 calc(var(--pad) * -0.5);
+  background: var(--wash);
+  border-radius: 1.25rem;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  pointer-events: none;
+}
+.icon {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 23%;
+  display: block;
+  box-shadow: 0 0 0 1px var(--line);
+}
+svg.icon { background: var(--ink); color: var(--bg); }
+.title { padding-top: 0.2rem; }
+.title h2 {
+  margin: 0;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 1.875rem;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+.title h2 a::after { content: ""; position: absolute; inset: 0 calc(var(--pad) * -0.5); border-radius: 1.25rem; }
+.kind { margin: 0.4rem 0 0; font-size: 0.9375rem; color: var(--soft); }
+.about { position: relative; padding-top: 0.45rem; pointer-events: none; }
+.about p { margin: 0; max-width: 34em; }
+.about .links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.5rem;
+  margin-top: 0.75rem;
+  font-size: 0.9375rem;
+}
+.links a {
+  pointer-events: auto;
+  color: var(--accent);
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 0.25em;
+  transition: text-decoration-color 0.2s ease;
+}
+.links a:hover, .links a:focus-visible { text-decoration-color: currentColor; }
+.arrow {
+  position: relative;
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-top: 0.55rem;
+  color: var(--soft);
+  transition: transform 0.3s cubic-bezier(.2,.7,.2,1), color 0.2s ease;
+  pointer-events: none;
+}
+.arrow svg { display: block; width: 100%; height: 100%; }
+.list li:last-child .item { border-bottom: 1px solid var(--line); }
+
+@media (hover: hover) {
+  .item:has(h2 a:hover)::before { opacity: 1; }
+  .item:has(h2 a:hover) .arrow { transform: translate(3px, -3px); color: var(--accent); }
+}
+.item:has(h2 a:focus-visible)::before { opacity: 1; }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 4px; }
+.title h2 a:focus-visible { outline: none; }
+
+/* Foot */
+.foot {
+  margin-top: auto;
+  padding-block: clamp(3.5rem, 10vh, 6rem) clamp(1.5rem, 3vw, 2.25rem);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.75rem 2rem;
+  font-size: 0.9375rem;
+  color: var(--soft);
+}
+.foot nav { display: flex; flex-wrap: wrap; gap: 0.5rem 1.75rem; }
+.foot a { transition: color 0.2s ease; }
+.foot a:hover, .foot a:focus-visible { color: var(--ink); }
+
+/* Narrow screens */
+@media (max-width: 46rem) {
+  .item {
+    grid-template-columns: 3rem minmax(0, 1fr) 1.25rem;
+    column-gap: 1rem;
+    row-gap: 0.9rem;
+    padding-block: 1.5rem;
+  }
+  .icon { width: 3rem; height: 3rem; }
+  .title { padding-top: 0; }
+  .title h2 { font-size: 1.625rem; }
+  .kind { margin-top: 0.2rem; }
+  .about { grid-column: 1 / -1; grid-row: 2; padding-top: 0; }
+  .arrow { width: 1.25rem; height: 1.25rem; margin-top: 0.35rem; }
+}
+
+/* One quiet entrance */
+@media (prefers-reduced-motion: no-preference) {
+  .rise { animation: rise 0.9s cubic-bezier(.2,.7,.2,1) both; animation-delay: calc(var(--i, 0) * 90ms); }
+  @keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+}
 </style>
 </head>
 <body>
-<h1>Ahmad Almazeedi</h1>
-<p class="lede">Software engineer in Kuwait. I build small tools and apps, mostly on my own.</p>
+<div class="page">
 
-<h2>iLostCount</h2>
-<p>A text counter that runs entirely in the browser: characters, words, LLM tokens and estimated speaking time, with no signup and nothing uploaded to a server.</p>
-<p><a href="https://ilostcount.com/">ilostcount.com</a> · <a href="https://ilostcount.com/tokens-to-words/">tokens to words converter</a></p>
+  <header class="top">
+    <span>Software engineer</span>
+    <span>Kuwait<span id="clock"></span></span>
+  </header>
 
-<h2>Atmita</h2>
-<p>A personal AI agent platform: background automations that do real work for one person instead of a chat window.</p>
-<p><a href="https://atmita.com/">atmita.com</a></p>
+  <main>
+    <h1 class="name">
+      <span class="latin rise">Ahmad Almazeedi</span>
+      <span class="arabic rise" style="--i:1" lang="ar" dir="rtl" aria-hidden="true">أحمد المزيدي</span>
+    </h1>
+    <p class="lede rise" style="--i:2">I hold the design. AI writes the code.</p>
 
-<h2>Animath</h2>
-<p>An iOS app that solves algebra step by step. The solver engine is open source.</p>
-<p><a href="https://github.com/ahmad-almazeedi/AnimathSolver">AnimathSolver on GitHub</a></p>
+    <section class="work rise" style="--i:3" aria-labelledby="work">
+      <p class="label" id="work">Work</p>
+      <ul class="list">
 
-<h2>Haseba</h2>
-<p>An iOS calculator app for everyday arithmetic.</p>
+        <li><article class="item">
+          <img class="icon" src="/assets/icons/atmita.png" alt="" width="56" height="56">
+          <div class="title">
+            <h2><a href="https://atmita.com/">Atmita</a></h2>
+            <p class="kind">AI agent · Web</p>
+          </div>
+          <div class="about">
+            <p>A personal AI agent platform: background automations that do real work for one person instead of a chat window.</p>
+            <p class="links"><a href="https://atmita.com/">atmita.com</a></p>
+          </div>
+          <span class="arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8.5 7H17v8.5"/></svg></span>
+        </article></li>
 
-<footer>
-<p><a href="https://github.com/ahmad-almazeedi">GitHub</a></p>
-</footer>
+        <li><article class="item">
+          <img class="icon" src="/assets/icons/haseba.png" alt="" width="56" height="56">
+          <div class="title">
+            <h2><a href="https://apps.apple.com/us/app/haseba-calculator-converter/id1121281655">Haseba</a></h2>
+            <p class="kind">iOS · since 2016</p>
+          </div>
+          <div class="about">
+            <p>An iOS calculator app for everyday arithmetic. Downloaded 1.3 million times.</p>
+            <p class="links"><a href="https://apps.apple.com/us/app/haseba-calculator-converter/id1121281655">App Store</a></p>
+          </div>
+          <span class="arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8.5 7H17v8.5"/></svg></span>
+        </article></li>
+
+        <li><article class="item">
+          <img class="icon" src="/assets/icons/animath.png" alt="" width="56" height="56">
+          <div class="title">
+            <h2><a href="https://apps.apple.com/us/app/animath-ai-tutor-solver/id1615638274">Animath</a></h2>
+            <p class="kind">iOS · since 2022</p>
+          </div>
+          <div class="about">
+            <p>An iOS app that solves algebra step by step. The solver engine is open source.</p>
+            <p class="links"><a href="https://apps.apple.com/us/app/animath-ai-tutor-solver/id1615638274">App Store</a><a href="https://github.com/ahmad-almazeedi/AnimathSolver">AnimathSolver on GitHub</a></p>
+          </div>
+          <span class="arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8.5 7H17v8.5"/></svg></span>
+        </article></li>
+
+        <li><article class="item">
+          <svg class="icon" viewBox="0 0 56 56" width="56" height="56" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M17 19v18M24.3 19v18M31.7 19v18M39 19v18M12.5 33.5l31-11"/></svg>
+          <div class="title">
+            <h2><a href="https://ilostcount.com/">iLostCount</a></h2>
+            <p class="kind">Web · no signup</p>
+          </div>
+          <div class="about">
+            <p>A text counter that runs entirely in the browser: characters, words, LLM tokens and estimated speaking time, with no signup and nothing uploaded to a server.</p>
+            <p class="links"><a href="https://ilostcount.com/">ilostcount.com</a><a href="https://ilostcount.com/tokens-to-words/">tokens to words converter</a></p>
+          </div>
+          <span class="arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8.5 7H17v8.5"/></svg></span>
+        </article></li>
+
+      </ul>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <nav aria-label="Elsewhere">
+      <a href="https://github.com/ahmad-almazeedi">GitHub</a>
+      <a href="https://x.com/Ahmad_ALMazeedi">X</a>
+      <a href="https://www.linkedin.com/in/ahmad-almazeedi-b4657ba8">LinkedIn</a>
+      <a href="https://apps.apple.com/us/developer/ahmad-almazeedi/id1121281654">App Store</a>
+    </nav>
+    <span>© 2026</span>
+  </footer>
+
+</div>
+<script>
+(function () {
+  var el = document.getElementById('clock');
+  if (!el || !window.Intl) return;
+  var fmt = new Intl.DateTimeFormat('en-GB', { timeZone: 'Asia/Kuwait', hour: '2-digit', minute: '2-digit' });
+  function tick() { el.textContent = ', ' + fmt.format(new Date()); }
+  tick();
+  setInterval(tick, 15000);
+})();
+</script>
 </body>
 </html>
