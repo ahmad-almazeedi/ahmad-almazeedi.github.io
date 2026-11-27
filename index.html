@@ -28,18 +28,11 @@
   --font: "Nunito", ui-rounded, "SF Pro Rounded", system-ui, sans-serif;
   --heavy: 900;
   --pad: clamp(1.25rem, 5vw, 5rem);
-  --t-atmita: linear-gradient(150deg, #EDE7FF, #DDEBFF 55%, #FFE7DA);
-  --t-haseba: linear-gradient(150deg, #F1F1EE, #E4E4DF);
-  --t-animath: linear-gradient(150deg, #FFE3EF, #DDF6EE);
-  --t-ilc: linear-gradient(150deg, #FFE6EC, #FFEBDD 50%, #DDF5EE);
+  --tile: #EFEFEB; --glow: .45; --lift: 1.9;
 }
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #0D0E0D; --ink: #EEEFEB; --soft: #9A9E97; --line: rgba(238,239,235,.09); --accent: #6FD0DC;
-    --t-atmita: linear-gradient(150deg, #231A45, #12203D 55%, #2E1A14);
-    --t-haseba: linear-gradient(150deg, #1E1F1E, #161716);
-    --t-animath: linear-gradient(150deg, #3A1628, #0F2C25);
-    --t-ilc: linear-gradient(150deg, #3A1622, #33200F 50%, #0F2C25);
+    --bg: #0D0E0D; --tile: #161716; --glow: .55; --lift: 1; --ink: #EEEFEB; --soft: #9A9E97; --line: rgba(238,239,235,.09); --accent: #6FD0DC;
   }
 }
 * { box-sizing: border-box; }
@@ -57,18 +50,12 @@ h1 .ar { font-family: "Baloo Bhaijaan 2", var(--font); font-weight: 800; font-si
 .line { margin: 1.5rem 0 0; font-weight: 700; font-size: clamp(1.3rem, 2.4vw, 1.75rem); line-height: 1.3; color: var(--soft); letter-spacing: -0.01em; }
 
 .apps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(2rem, 3.5vw, 3rem) clamp(.875rem, 1.6vw, 1.25rem); }
-.apps a { display: grid; gap: 1rem; }
-.shot { position: relative; aspect-ratio: 5 / 4; border-radius: 2rem; overflow: hidden; box-shadow: inset 0 0 0 1px var(--line); }
-.apps li:nth-child(1) .shot { background: var(--t-atmita); }
-.apps li:nth-child(2) .shot { background: var(--t-haseba); }
-.apps li:nth-child(3) .shot { background: var(--t-animath); }
-.apps li:nth-child(4) .shot { background: var(--t-ilc); }
-.shot img { position: absolute; display: block; height: auto; box-shadow: 0 0 0 1px rgba(0,0,0,.08), 0 30px 60px -24px rgba(0,0,0,.4); }
-.shot.web img { left: 9%; top: 13%; width: 112%; border-radius: .9rem; }
-.shot.phone img { left: 50%; top: 12%; width: 42%; transform: translateX(-50%); border-radius: 1.75rem 1.75rem 0 0; box-shadow: 0 0 0 7px #151615, 0 0 0 8px rgba(255,255,255,.08), 0 40px 70px -20px rgba(0,0,0,.45); }
-.cap { display: flex; align-items: center; gap: .75rem; padding-inline: .25rem; }
-.cap img { width: 2.5rem; height: 2.5rem; border-radius: 23%; box-shadow: 0 0 0 1px var(--line); }
-.cap b { font-weight: var(--heavy); font-size: 1.375rem; letter-spacing: -0.02em; }
+.apps a { display: grid; gap: 1.1rem; }
+.tile { position: relative; display: grid; place-items: center; aspect-ratio: 5 / 4; border-radius: 2.25rem; overflow: hidden; background: var(--tile); isolation: isolate; }
+.tile .glow { position: absolute; inset: -30%; width: 160%; height: 160%; object-fit: cover; filter: blur(80px) saturate(2.2) brightness(var(--lift)); opacity: var(--glow); z-index: -1; }
+.tile .icon { width: 46%; height: auto; aspect-ratio: 1; border-radius: 23%; box-shadow: 0 0 0 1px rgba(255,255,255,.06), 0 40px 80px -30px rgba(0,0,0,.55); }
+.cap { display: flex; align-items: baseline; gap: .75rem; padding-inline: .35rem; }
+.cap b { font-weight: var(--heavy); font-size: 1.5rem; letter-spacing: -0.02em; }
 .cap span { margin-inline-start: auto; color: var(--soft); font-weight: 700; }
 
 .foot { margin-top: auto; padding-block: 4.5rem 2rem; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; color: var(--soft); font-weight: 600; }
@@ -103,20 +90,20 @@ h1 .ar { font-family: "Baloo Bhaijaan 2", var(--font); font-weight: 800; font-si
 
     <ul class="apps" aria-label="Work">
       <li class="fade" style="--i:3"><a href="https://atmita.com/">
-        <div class="shot web"><img src="/assets/shots/atmita.webp" alt="" width="1100" height="689" loading="lazy"></div>
-        <div class="cap"><img src="/assets/icons/atmita.png" alt="" width="40" height="40"><b>Atmita</b><span>AI agent</span></div>
+        <div class="tile"><img class="glow" src="/assets/icons/atmita.png" alt=""><img class="icon" src="/assets/icons/atmita.png" alt="" width="360" height="360"></div>
+        <div class="cap"><b>Atmita</b><span>AI agent</span></div>
       </a></li>
       <li class="fade" style="--i:4"><a href="https://apps.apple.com/us/app/haseba-calculator-converter/id1121281655">
-        <div class="shot phone"><picture><source srcset="/assets/shots/haseba-dark.webp" media="(prefers-color-scheme: dark)"><img src="/assets/shots/haseba-light.webp" alt="" width="468" height="989" loading="lazy"></picture></div>
-        <div class="cap"><img src="/assets/icons/haseba.png" alt="" width="40" height="40"><b>Haseba</b><span>1.3M downloads</span></div>
+        <div class="tile" style="--glow:.18"><img class="glow" src="/assets/icons/haseba.png" alt=""><img class="icon" src="/assets/icons/haseba.png" alt="" width="360" height="360"></div>
+        <div class="cap"><b>Haseba</b><span>1.3M downloads</span></div>
       </a></li>
       <li class="fade" style="--i:5"><a href="https://apps.apple.com/us/app/animath-ai-tutor-solver/id1615638274">
-        <div class="shot phone"><img src="/assets/shots/animath.webp" alt="" width="468" height="989" loading="lazy"></div>
-        <div class="cap"><img src="/assets/icons/animath.png" alt="" width="40" height="40"><b>Animath</b><span>Algebra</span></div>
+        <div class="tile"><img class="glow" src="/assets/icons/animath.png" alt=""><img class="icon" src="/assets/icons/animath.png" alt="" width="360" height="360"></div>
+        <div class="cap"><b>Animath</b><span>Algebra</span></div>
       </a></li>
       <li class="fade" style="--i:6"><a href="https://ilostcount.com/">
-        <div class="shot web"><picture><source srcset="/assets/shots/ilc-dark.webp" media="(prefers-color-scheme: dark)"><img src="/assets/shots/ilc-light.webp" alt="" width="1100" height="706" loading="lazy"></picture></div>
-        <div class="cap"><img src="/assets/icons/ilostcount.png" alt="" width="40" height="40"><b>iLostCount</b><span>Counter</span></div>
+        <div class="tile"><img class="glow" src="/assets/icons/ilostcount.png" alt=""><img class="icon" src="/assets/icons/ilostcount.png" alt="" width="360" height="360"></div>
+        <div class="cap"><b>iLostCount</b><span>Counter</span></div>
       </a></li>
     </ul>
   </main>
