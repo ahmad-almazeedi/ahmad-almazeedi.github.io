@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Ahmad Almazeedi: software made for everyone</title>
-<meta name="description" content="Ahmad Almazeedi, software engineer in Kuwait. Atmita, Haseba, Animath and iLostCount, each one you can try right on the page.">
+<title>Ahmad Almazeedi</title>
+<meta name="description" content="Ahmad Almazeedi, software engineer in Kuwait. Useful and beautiful software, made for everyone: Atmita, Haseba, Animath and iLostCount.">
 <link rel="canonical" href="https://ahmad-almazeedi.github.io/">
-<meta name="theme-color" content="#F5F3EE" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#0C0D0C" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#FAFAF8" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0E0F0E" media="(prefers-color-scheme: dark)">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Ahmad Almazeedi">
 <meta property="og:description" content="Useful and beautiful software, made for everyone.">
@@ -19,425 +19,79 @@
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="preload" href="/assets/fonts/newsreader.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
-<script>
-(function () {
-  var q = new URLSearchParams(location.search).get('lang');
-  var saved = null; try { saved = localStorage.getItem('lang'); } catch (e) {}
-  var lang = q || saved || ((navigator.language || '').slice(0, 2) === 'ar' ? 'ar' : 'en');
-  if (lang === 'ar') { document.documentElement.lang = 'ar'; document.documentElement.dir = 'rtl'; }
-})();
-</script>
 <style>
 @font-face { font-family: "Newsreader"; src: url("/assets/fonts/newsreader.woff2") format("woff2"); font-weight: 200 800; font-display: swap; }
 @font-face { font-family: "Inter"; src: url("/assets/fonts/inter.woff2") format("woff2"); font-weight: 100 900; font-display: swap; }
 @font-face { font-family: "Amiri Name"; src: url("/assets/fonts/amiri-name.woff2") format("woff2"); font-display: swap; }
-@font-face { font-family: "Amiri"; src: url("/assets/fonts/amiri-400.woff2") format("woff2"); font-display: swap; unicode-range: U+0600-06FF, U+0750-077F, U+08A0-08FF, U+200C-200E, U+FB50-FDFF, U+FE70-FEFC; }
-@font-face { font-family: "Plex Arabic"; src: url("/assets/fonts/plex-arabic-400.woff2") format("woff2"); font-weight: 400; font-display: swap; unicode-range: U+0600-06FF, U+0750-077F, U+08A0-08FF, U+200C-200E, U+FB50-FDFF, U+FE70-FEFC; }
-@font-face { font-family: "Plex Arabic"; src: url("/assets/fonts/plex-arabic-500.woff2") format("woff2"); font-weight: 500 700; font-display: swap; unicode-range: U+0600-06FF, U+0750-077F, U+08A0-08FF, U+200C-200E, U+FB50-FDFF, U+FE70-FEFC; }
-
 :root {
   color-scheme: light dark;
-  --bg: #F5F3EE;
-  --card: #FFFFFF;
-  --ink: #141513;
-  --soft: #63655F;
-  --faint: #8D8F88;
-  --line: rgba(20, 21, 19, 0.10);
-  --well: #F1EFE9;
-  --accent: #0B6E7C;
-  --ok: #1F9D55;
-  --shadow: 0 1px 2px rgba(20,21,19,.04), 0 8px 30px -12px rgba(20,21,19,.12);
-  --serif: "Newsreader", "Amiri", "Iowan Old Style", Georgia, serif;
-  --sans: "Inter", "Plex Arabic", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  --pad: clamp(1.25rem, 5vw, 4.5rem);
-  --r: 1.75rem;
+  --bg: #FAFAF8; --ink: #151715; --soft: #6B6F69; --line: rgba(21,23,21,.10); --accent: #0B6E7C;
+  --serif: "Newsreader", Georgia, serif;
+  --sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --pad: clamp(1.5rem, 6vw, 6rem);
 }
 @media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #0C0D0C;
-    --card: #161816;
-    --ink: #ECEDE8;
-    --soft: #A0A39C;
-    --faint: #73766F;
-    --line: rgba(236, 237, 232, 0.10);
-    --well: #1E201E;
-    --accent: #6FCBD7;
-    --ok: #4ADE80;
-    --shadow: 0 1px 0 rgba(255,255,255,.03) inset, 0 10px 40px -16px rgba(0,0,0,.6);
-  }
+  :root { --bg: #0E0F0E; --ink: #ECEDE9; --soft: #969A93; --line: rgba(236,237,233,.11); --accent: #78C9D3; }
 }
 * { box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; }
-body {
-  margin: 0; background: var(--bg); color: var(--ink);
-  font-family: var(--sans); font-size: 1.0625rem; line-height: 1.55;
-  -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
-}
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--sans); font-size: 1.0625rem; line-height: 1.6; -webkit-font-smoothing: antialiased; }
 a { color: inherit; text-decoration: none; }
-button, input, textarea { font: inherit; color: inherit; }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 6px; }
 ::selection { background: var(--accent); color: var(--bg); }
-:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
-.skip { position: absolute; inset-inline-start: 1rem; top: -4rem; background: var(--ink); color: var(--bg); padding: .5rem 1rem; border-radius: 999px; z-index: 9; }
-.skip:focus { top: 1rem; }
-.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
-/* Language switching: one page, two languages */
-html:not([lang="ar"]) [data-ar], html[lang="ar"] [data-en] { display: none !important; }
-html[lang="ar"] body { font-size: 1.125rem; line-height: 1.75; }
+.page { max-width: 72rem; margin: 0 auto; padding: 0 var(--pad); min-height: 100vh; min-height: 100svh; display: flex; flex-direction: column; }
 
-.wrap { max-width: 78rem; margin: 0 auto; padding: 0 var(--pad); }
+.top { display: flex; justify-content: space-between; gap: 1rem; padding-block: 2.25rem; color: var(--soft); font-size: .9375rem; }
 
-/* Top */
-.top { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding-block: 1.5rem; font-size: .9375rem; color: var(--soft); }
-.mark { display: flex; align-items: center; gap: .75rem; color: var(--ink); font-weight: 500; }
-.mark .ar { font-family: "Amiri Name", "Amiri", serif; font-size: 1.2em; color: var(--accent); font-weight: 400; line-height: 1; }
-.top-right { display: flex; align-items: center; gap: 1.25rem; }
-.clock { font-variant-numeric: tabular-nums; }
-.lang {
-  display: inline-flex; padding: 3px; border-radius: 999px; background: var(--card); box-shadow: 0 0 0 1px var(--line);
-}
-.lang button {
-  border: 0; background: transparent; cursor: pointer; padding: .3rem .8rem; border-radius: 999px; font-size: .875rem; color: var(--soft);
-  transition: background .2s, color .2s;
-}
-.lang button[aria-pressed="true"] { background: var(--ink); color: var(--bg); }
-.lang .ar-btn { font-family: "Plex Arabic", var(--sans); }
+.hero { padding-block: clamp(3.5rem, 13vh, 8rem) clamp(4.5rem, 13vh, 8rem); }
+h1 { margin: 0; display: grid; gap: .12em; font-family: var(--serif); font-weight: 300; font-size: clamp(3.25rem, 10.5vw, 8.75rem); line-height: .95; letter-spacing: -0.04em; }
+h1 .ar { font-family: "Amiri Name", serif; font-weight: 400; font-size: .6em; line-height: 1.4; letter-spacing: 0; color: var(--accent); }
+.line { margin: clamp(1.75rem, 4vh, 2.75rem) 0 0; font-family: var(--serif); font-weight: 350; font-size: clamp(1.35rem, 2.4vw, 1.85rem); line-height: 1.35; letter-spacing: -0.01em; color: var(--soft); text-wrap: balance; }
 
-/* Hero */
-.hero { padding-block: clamp(3.5rem, 12vh, 8.5rem) clamp(3rem, 8vh, 5.5rem); }
-.hero h1 {
-  margin: 0; font-family: var(--serif); font-weight: 300;
-  font-size: clamp(3rem, 8.6vw, 8.25rem); line-height: .98; letter-spacing: -0.04em;
-  max-width: 11.5em; text-wrap: balance;
+.apps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 2.5rem; }
+.apps a { display: grid; gap: .25rem; }
+.apps img { width: 4.25rem; height: 4.25rem; border-radius: 23%; box-shadow: 0 0 0 1px var(--line); margin-bottom: .85rem; transition: transform .35s cubic-bezier(.2,.7,.2,1); }
+.apps b { font-family: var(--serif); font-weight: 400; font-size: 1.5rem; letter-spacing: -0.015em; transition: color .2s; }
+.apps span { color: var(--soft); font-size: .9688rem; }
+@media (hover: hover) {
+  .apps a:hover img { transform: translateY(-4px); }
+  .apps a:hover b { color: var(--accent); }
 }
-.hero h1 em { font-style: normal; color: var(--accent); }
-html[lang="ar"] .hero h1 { font-family: "Amiri", var(--serif); font-weight: 400; letter-spacing: 0; line-height: 1.35; font-size: clamp(2.6rem, 7.2vw, 6.75rem); }
-.intro { display: grid; grid-template-columns: minmax(0, 34rem) auto; justify-content: space-between; align-items: end; gap: 2rem 3rem; margin-top: clamp(2rem, 5vh, 3.25rem); }
-.intro p { margin: 0; font-size: clamp(1.125rem, 1.6vw, 1.3rem); line-height: 1.5; color: var(--soft); text-wrap: pretty; }
-.intro p strong { color: var(--ink); font-weight: 500; }
-.facts { display: flex; gap: clamp(1.5rem, 4vw, 3.5rem); margin: 0; }
-.facts div { display: grid; gap: .15rem; }
-.facts dt { order: 2; font-size: .875rem; color: var(--soft); }
-.facts dd { order: 1; margin: 0; font-family: var(--serif); font-size: clamp(2rem, 3.4vw, 2.75rem); line-height: 1; letter-spacing: -0.02em; font-variant-numeric: lining-nums; }
 
-/* Section head */
-.head { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; margin-bottom: 1.25rem; }
-.head h2 { margin: 0; font-size: .8125rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: var(--soft); }
-html[lang="ar"] .head h2 { letter-spacing: 0; font-size: .95rem; }
-.head p { margin: 0; font-size: .9375rem; color: var(--faint); }
+.foot { margin-top: auto; padding-block: 5.5rem 2.25rem; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; color: var(--soft); font-size: .9375rem; }
+.foot nav { display: flex; gap: 1.75rem; }
+.foot a:hover { color: var(--ink); }
 
-/* Bento */
-.grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: clamp(.875rem, 1.4vw, 1.25rem); }
-.card {
-  position: relative; grid-column: span 6; display: flex; flex-direction: column; gap: 1.5rem;
-  background: var(--card); border-radius: var(--r); padding: clamp(1.25rem, 2.2vw, 2rem);
-  box-shadow: var(--shadow), 0 0 0 1px var(--line); overflow: hidden;
-}
-.card.atmita { grid-column: span 7; }
-.card.haseba { grid-column: span 5; }
-.card-top { display: flex; align-items: center; gap: 1rem; }
-.icon { width: 3.25rem; height: 3.25rem; border-radius: 23%; flex: none; display: block; box-shadow: 0 0 0 1px var(--line); }
-svg.icon { background: #121614; color: #F2F4F1; }
-.card-top h3 { margin: 0; font-family: var(--serif); font-weight: 400; font-size: 1.875rem; line-height: 1.05; letter-spacing: -0.02em; }
-html[lang="ar"] .card-top h3 { font-family: var(--serif); letter-spacing: 0; }
-.kind { margin: .2rem 0 0; font-size: .875rem; color: var(--soft); }
-.go {
-  margin-inline-start: auto; display: inline-flex; align-items: center; gap: .4rem; flex: none;
-  padding: .55rem .95rem; border-radius: 999px; font-size: .875rem; font-weight: 500;
-  background: var(--well); transition: background .2s, color .2s;
-}
-.go svg { width: 1rem; height: 1rem; transition: transform .25s cubic-bezier(.2,.7,.2,1); }
-html[dir="rtl"] .go svg { transform: scaleX(-1); }
-.go:hover { background: var(--ink); color: var(--bg); }
-.go:hover svg { transform: translate(2px, -2px); }
-html[dir="rtl"] .go:hover svg { transform: scaleX(-1) translate(2px, -2px); }
-.desc { margin: 0; color: var(--soft); max-width: 34em; text-wrap: pretty; }
-.desc a { color: var(--accent); text-decoration: underline; text-underline-offset: .2em; text-decoration-thickness: 1px; }
-.try { flex: 1; display: flex; flex-direction: column; justify-content: flex-start; min-width: 0; }
-.card.atmita .try, .card.haseba .try { justify-content: center; }
-.try-label { display: flex; align-items: center; gap: .5rem; margin: 0 0 .75rem; font-size: .75rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: var(--faint); }
-html[lang="ar"] .try-label { letter-spacing: 0; font-size: .85rem; }
-.try-label::before { content: ""; width: .4rem; height: .4rem; border-radius: 50%; background: var(--ok); box-shadow: 0 0 0 3px color-mix(in srgb, var(--ok) 20%, transparent); }
+@media (max-width: 52rem) { .apps { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2.5rem 1.5rem; } }
 
-/* Atmita: dark stage that stays dark in both themes */
-.card.atmita { background: #0D0E12; color: #EDEEF2; box-shadow: 0 0 0 1px rgba(255,255,255,.06), 0 20px 60px -24px rgba(40, 20, 90, .5); }
-.card.atmita::before {
-  content: ""; position: absolute; inset: auto -20% -55% -20%; height: 90%;
-  background: radial-gradient(closest-side at 30% 50%, rgba(124, 58, 237, .45), transparent 70%),
-              radial-gradient(closest-side at 60% 60%, rgba(14, 165, 233, .35), transparent 70%),
-              radial-gradient(closest-side at 85% 40%, rgba(249, 115, 22, .28), transparent 70%);
-  filter: blur(20px); pointer-events: none;
-}
-.card.atmita > * { position: relative; }
-.card.atmita .kind, .card.atmita .desc { color: #A3A6B4; }
-.card.atmita .go { background: rgba(255,255,255,.08); }
-.card.atmita .go:hover { background: #EDEEF2; color: #0D0E12; }
-.card.atmita .icon { box-shadow: 0 0 0 1px rgba(255,255,255,.1); }
-.card.atmita .try-label { color: #7D8091; }
-.stage { display: grid; gap: .75rem; min-height: 12rem; align-content: center; }
-.bubble {
-  justify-self: end; max-width: 85%; padding: .75rem 1.05rem; border-radius: 1.25rem 1.25rem .35rem 1.25rem;
-  background: rgba(255,255,255,.09); backdrop-filter: blur(8px); font-size: 1rem; min-height: 2.9rem;
-}
-html[dir="rtl"] .bubble { border-radius: 1.25rem 1.25rem 1.25rem .35rem; }
-.bubble .caret { display: inline-block; width: 2px; height: 1.05em; background: currentColor; vertical-align: -0.15em; margin-inline-start: 2px; animation: blink 1s steps(1) infinite; }
-@keyframes blink { 50% { opacity: 0; } }
-.job {
-  justify-self: start; display: flex; align-items: center; gap: .9rem; width: min(100%, 24rem);
-  padding: .9rem 1.1rem; border-radius: 1.1rem; background: rgba(255,255,255,.96); color: #121318;
-  box-shadow: 0 12px 32px -12px rgba(0,0,0,.6);
-  opacity: 0; transform: translateY(10px) scale(.98); transition: opacity .5s ease, transform .6s cubic-bezier(.2,.7,.2,1);
-}
-.job.show { opacity: 1; transform: none; }
-.job-ic { width: 2.25rem; height: 2.25rem; border-radius: .7rem; display: grid; place-items: center; background: linear-gradient(135deg, #7C3AED, #0EA5E9); color: #fff; flex: none; }
-.job-ic svg { width: 1.15rem; height: 1.15rem; }
-.job b { display: block; font-weight: 600; font-size: .95rem; line-height: 1.3; }
-.job span { display: block; font-size: .8125rem; color: #62646E; }
-.job .live { margin-inline-start: auto; display: inline-flex; align-items: center; gap: .35rem; font-size: .75rem; font-weight: 500; color: #15803D; flex: none; }
-.job .live::before { content: ""; width: .45rem; height: .45rem; border-radius: 50%; background: #22C55E; animation: pulse 1.6s ease-in-out infinite; }
-@keyframes pulse { 50% { opacity: .35; } }
-.dots { display: flex; gap: .4rem; margin-top: .25rem; }
-.dots button { width: 1.6rem; height: .3rem; padding: 0; border: 0; border-radius: 999px; background: rgba(255,255,255,.18); cursor: pointer; }
-.dots button[aria-current="true"] { background: #EDEEF2; }
-
-/* Haseba: a working calculator */
-.calc { width: 100%; max-width: 20rem; margin-inline: auto; padding: 1rem; border-radius: 1.5rem; background: var(--well); direction: ltr; }
-.screen { text-align: right; padding: .25rem .5rem .75rem; min-height: 4.75rem; display: grid; align-content: end; }
-.screen small { font-size: .8125rem; color: var(--faint); min-height: 1.2em; font-variant-numeric: tabular-nums; }
-.screen output { font-size: 2.75rem; font-weight: 300; line-height: 1.05; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
-.keys { display: grid; grid-template-columns: repeat(4, 1fr); gap: .5rem; }
-.keys button {
-  border: 0; cursor: pointer; aspect-ratio: 1.25; border-radius: .9rem; font-size: 1.2rem; background: var(--card);
-  box-shadow: 0 1px 0 var(--line); transition: transform .08s ease, background .15s;
-}
-.keys button:active { transform: scale(.95); }
-.keys .op { background: var(--ink); color: var(--bg); }
-.keys .fn { color: var(--soft); }
-.keys .zero { grid-column: span 2; aspect-ratio: auto; }
-
-/* Animath */
-.solve { display: grid; grid-template-columns: minmax(0, 1fr); align-content: start; gap: .9rem; }
-.eq { display: flex; align-items: center; gap: .5rem; padding: .35rem .35rem .35rem 1rem; border-radius: 1rem; background: var(--well); direction: ltr; }
-.eq input { flex: 1; min-width: 0; width: 100%; border: 0; background: transparent; font-family: var(--serif); font-size: 1.6rem; letter-spacing: -0.01em; padding: .3rem 0; outline: none; }
-.eq button { border: 0; cursor: pointer; padding: .65rem 1.1rem; border-radius: .75rem; background: var(--ink); color: var(--bg); font-weight: 500; font-size: .9375rem; }
-.eq-ex { display: flex; flex-wrap: wrap; gap: .4rem; }
-.eq-ex button { border: 0; cursor: pointer; padding: .3rem .7rem; border-radius: 999px; background: transparent; box-shadow: 0 0 0 1px var(--line); font-family: var(--serif); font-size: 1rem; color: var(--soft); direction: ltr; }
-.eq-ex button:hover { color: var(--ink); }
-.steps { list-style: none; margin: 0; padding: 0; display: grid; gap: .1rem; counter-reset: s; }
-.steps li { display: grid; grid-template-columns: 1.6rem 1fr; gap: .75rem; align-items: baseline; padding: .45rem 0; border-bottom: 1px dashed var(--line); counter-increment: s; }
-.steps li:last-child { border-bottom: 0; }
-.steps li::before { content: counter(s); font-size: .75rem; color: var(--faint); font-variant-numeric: tabular-nums; text-align: center; }
-.steps .m { font-family: var(--serif); font-size: 1.3rem; direction: ltr; unicode-bidi: isolate; }
-.steps .n { display: block; font-size: .8125rem; color: var(--faint); }
-.steps li.final .m { color: var(--accent); font-size: 1.5rem; }
 @media (prefers-reduced-motion: no-preference) {
-  .steps li { animation: rise .45s cubic-bezier(.2,.7,.2,1) both; animation-delay: calc(var(--i) * 110ms); }
-}
-
-/* iLostCount */
-.count textarea {
-  width: 100%; min-height: 11rem; resize: vertical; border: 0; border-radius: 1rem; padding: 1rem 1.1rem;
-  background: var(--well); line-height: 1.55; outline: none;
-}
-.count textarea:focus-visible { box-shadow: 0 0 0 2px var(--accent); }
-.tally { display: grid; grid-template-columns: repeat(4, 1fr); gap: .5rem; margin: .75rem 0 0; }
-.tally div { display: grid; padding: .7rem .8rem; border-radius: .9rem; box-shadow: 0 0 0 1px var(--line); }
-.tally dt { order: 2; font-size: .75rem; color: var(--soft); }
-.tally dd { order: 1; margin: 0; font-size: 1.5rem; font-weight: 500; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
-.private { margin: .65rem 0 0; font-size: .8125rem; color: var(--faint); display: flex; align-items: center; gap: .4rem; }
-.private svg { width: .9rem; height: .9rem; flex: none; }
-
-/* This page */
-.made { margin-top: clamp(4.5rem, 12vh, 8rem); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); gap: 2rem 4rem; padding-top: 2.25rem; border-top: 1px solid var(--line); }
-.made h2 { margin: 0; font-family: var(--serif); font-weight: 300; font-size: clamp(1.9rem, 3vw, 2.6rem); line-height: 1.1; letter-spacing: -0.02em; }
-html[lang="ar"] .made h2 { letter-spacing: 0; line-height: 1.4; }
-.made ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem 2rem; }
-.made li { display: grid; grid-template-columns: 1.5rem 1fr; gap: .6rem; color: var(--soft); font-size: .9688rem; }
-.made li b { display: block; color: var(--ink); font-weight: 500; }
-.made li svg { width: 1.25rem; height: 1.25rem; color: var(--accent); margin-top: .2rem; }
-
-/* Foot */
-.foot { margin-top: clamp(4rem, 10vh, 6rem); padding-block: 1.75rem 2.25rem; display: flex; flex-wrap: wrap; justify-content: space-between; gap: .75rem 2rem; font-size: .9375rem; color: var(--soft); border-top: 1px solid var(--line); }
-.foot nav { display: flex; flex-wrap: wrap; gap: .5rem 1.75rem; }
-.foot a:hover, .foot a:focus-visible { color: var(--ink); }
-
-/* Entrance */
-@media (prefers-reduced-motion: no-preference) {
-  .rise { animation: rise .9s cubic-bezier(.2,.7,.2,1) both; animation-delay: calc(var(--i, 0) * 90ms); }
-  @keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
-}
-
-/* Narrow */
-@media (max-width: 64rem) {
-  .card, .card.atmita, .card.haseba { grid-column: span 12; }
-  .intro { grid-template-columns: 1fr; }
-  .made { grid-template-columns: 1fr; }
-}
-@media (max-width: 40rem) {
-  .clock { display: none; }
-  .mark .en-name { display: none; }
-  .facts { gap: 1.5rem; }
-  .card-top h3 { font-size: 1.6rem; }
-  .go span { display: none; }
-  .go { padding: .6rem; }
-  .tally { grid-template-columns: repeat(2, 1fr); }
-  .made ul { grid-template-columns: 1fr; }
-  .stage { min-height: 14rem; }
-  .eq input { font-size: 1.35rem; }
+  .fade { animation: fade 1s cubic-bezier(.2,.7,.2,1) both; animation-delay: calc(var(--i, 0) * 120ms); }
+  @keyframes fade { from { opacity: 0; transform: translateY(8px); } }
 }
 </style>
 </head>
 <body>
-<a class="skip" href="#work"><span data-en>Skip to the work</span><span data-ar>انتقل إلى الأعمال</span></a>
-
-<div class="wrap">
-  <header class="top">
-    <a class="mark" href="/" aria-label="Ahmad Almazeedi">
-      <span class="en-name">Ahmad Almazeedi</span>
-      <span class="ar" lang="ar">أحمد المزيدي</span>
-    </a>
-    <div class="top-right">
-      <span class="clock"><span data-en>Kuwait</span><span data-ar>الكويت</span> <span id="clock" dir="ltr"></span></span>
-      <div class="lang" role="group" aria-label="Language / اللغة">
-        <button type="button" data-set="en" aria-pressed="true">EN</button>
-        <button type="button" data-set="ar" class="ar-btn" lang="ar" aria-pressed="false">عربي</button>
-      </div>
-    </div>
+<div class="page">
+  <header class="top fade">
+    <span>Software engineer</span>
+    <span>Kuwait</span>
   </header>
 
   <main>
     <section class="hero">
-      <h1 class="rise">
-        <span data-en>Useful and beautiful software, <em>made for everyone.</em></span>
-        <span data-ar>برمجيات مفيدة وجميلة، <em>صُنعت للجميع.</em></span>
+      <h1 class="fade" style="--i:1">
+        <span>Ahmad Almazeedi</span>
+        <span class="ar" lang="ar" dir="rtl">أحمد المزيدي</span>
       </h1>
-      <div class="intro rise" style="--i:2">
-        <p data-en>I'm <strong>Ahmad</strong>, a software engineer in Kuwait. I design every product here, and AI is part of how I build them. Don't take my word for it: <strong>each one works right on this page.</strong></p>
-        <p data-ar>أنا <strong>أحمد</strong>، مهندس برمجيات من الكويت. أصمم كل منتج هنا، والذكاء الاصطناعي جزء من طريقة بنائه. لا تأخذ كلامي فقط: <strong>كل منتج يعمل هنا في هذه الصفحة.</strong></p>
-        <dl class="facts">
-          <div><dt><span data-en>downloads</span><span data-ar>تحميل</span></dt><dd>1.3M</dd></div>
-          <div><dt><span data-en>products</span><span data-ar>منتجات</span></dt><dd>4</dd></div>
-          <div><dt><span data-en>shipping since</span><span data-ar>أطلق منذ</span></dt><dd>2016</dd></div>
-        </dl>
-      </div>
+      <p class="line fade" style="--i:2">Useful and beautiful software, made for everyone.</p>
     </section>
 
-    <section id="work" aria-labelledby="work-h">
-      <div class="head rise" style="--i:3">
-        <h2 id="work-h"><span data-en>Work, live</span><span data-ar>الأعمال، تعمل الآن</span></h2>
-        <p><span data-en>Try each one. Nothing to install.</span><span data-ar>جرّب كل واحد. لا شيء لتثبيته.</span></p>
-      </div>
-
-      <div class="grid">
-
-        <!-- Atmita -->
-        <article class="card atmita rise" style="--i:4" aria-labelledby="t-atmita">
-          <div class="card-top">
-            <img class="icon" src="/assets/icons/atmita.png" alt="" width="52" height="52">
-            <div>
-              <h3 id="t-atmita">Atmita</h3>
-              <p class="kind"><span data-en>Personal AI agent · Web</span><span data-ar>وكيل ذكاء اصطناعي شخصي · ويب</span></p>
-            </div>
-            <a class="go" href="https://atmita.com/"><span>atmita.com</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8.5 7H17v8.5"/></svg></a>
-          </div>
-          <div class="try">
-            <p class="try-label"><span data-en>You say it once. It keeps doing it.</span><span data-ar>تقولها مرة، ويستمر في تنفيذها.</span></p>
-            <div class="stage" aria-live="polite">
-              <div class="bubble"><span id="say"></span><span class="caret" aria-hidden="true"></span></div>
-              <div class="job" id="job">
-                <span class="job-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v3M12 18v3M4.6 4.6l2.1 2.1M17.3 17.3l2.1 2.1M3 12h3M18 12h3M4.6 19.4l2.1-2.1M17.3 6.7l2.1-2.1"/><circle cx="12" cy="12" r="3.2"/></svg></span>
-                <span><b id="job-t"></b><span id="job-w"></span></span>
-                <span class="live"><span data-en>Running</span><span data-ar>يعمل</span></span>
-              </div>
-              <div class="dots" id="dots"></div>
-            </div>
-          </div>
-          <p class="desc"><span data-en>A personal AI agent that works in the background. Tell it what you need in plain words, and it does the work for you, every day.</span><span data-ar>وكيل ذكاء اصطناعي شخصي يعمل في الخلفية. أخبره بما تحتاجه بكلمات بسيطة، وهو ينجز العمل عنك كل يوم.</span></p>
-        </article>
-
-        <!-- Haseba -->
-        <article class="card haseba rise" style="--i:5" aria-labelledby="t-haseba">
-          <div class="card-top">
-            <img class="icon" src="/assets/icons/haseba.png" alt="" width="52" height="52">
-            <div>
-              <h3 id="t-haseba">Haseba</h3>
-              <p class="kind"><span data-en>iOS · since 2016</span><span data-ar>iOS · منذ 2016</span></p>
-            </div>
-            <a class="go" href="https://apps.apple.com/us/app/haseba-calculator-converter/id1121281655"><span>App Store</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8.5 7H17v8.5"/></svg></a>
-          </div>
-          <div class="try">
-            <div class="calc" id="calc" role="group" aria-label="Calculator">
-              <div class="screen"><small id="c-exp"></small><output id="c-out" aria-live="polite">0</output></div>
-              <div class="keys">
-                <button class="fn" data-k="c">AC</button><button class="fn" data-k="neg">±</button><button class="fn" data-k="%">%</button><button class="op" data-k="/" aria-label="divide">÷</button>
-                <button data-k="7">7</button><button data-k="8">8</button><button data-k="9">9</button><button class="op" data-k="*" aria-label="times">×</button>
-                <button data-k="4">4</button><button data-k="5">5</button><button data-k="6">6</button><button class="op" data-k="-" aria-label="minus">−</button>
-                <button data-k="1">1</button><button data-k="2">2</button><button data-k="3">3</button><button class="op" data-k="+" aria-label="plus">+</button>
-                <button class="zero" data-k="0">0</button><button data-k=".">.</button><button class="op" data-k="=" aria-label="equals">=</button>
-              </div>
-            </div>
-          </div>
-          <p class="desc"><span data-en>A calculator for everyday sums, downloaded 1.3 million times. Go on, it works.</span><span data-ar>آلة حاسبة للحسابات اليومية، حُمّلت 1.3 مليون مرة. جرّبها، إنها تعمل.</span></p>
-        </article>
-
-        <!-- Animath -->
-        <article class="card rise" style="--i:6" aria-labelledby="t-animath">
-          <div class="card-top">
-            <img class="icon" src="/assets/icons/animath.png" alt="" width="52" height="52">
-            <div>
-              <h3 id="t-animath">Animath</h3>
-              <p class="kind"><span data-en>iOS · since 2022</span><span data-ar>iOS · منذ 2022</span></p>
-            </div>
-            <a class="go" href="https://apps.apple.com/us/app/animath-ai-tutor-solver/id1615638274"><span>App Store</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8.5 7H17v8.5"/></svg></a>
-          </div>
-          <div class="try solve">
-            <form class="eq" id="eq-form">
-              <label class="sr" for="eq"><span data-en>Equation</span><span data-ar>المعادلة</span></label>
-              <input id="eq" value="3x + 4 = 19" autocomplete="off" spellcheck="false" inputmode="text">
-              <button type="submit"><span data-en>Solve</span><span data-ar>حل</span></button>
-            </form>
-            <div class="eq-ex" aria-label="Examples"><button type="button">5x − 2 = 2x + 10</button><button type="button">x/4 + 1 = 3</button><button type="button">2(x + 3) = 14</button></div>
-            <ol class="steps" id="steps" aria-live="polite"></ol>
-          </div>
-          <p class="desc"><span data-en>Solves algebra step by step, so you learn the why, not only the answer. The solver engine is <a href="https://github.com/ahmad-almazeedi/AnimathSolver">open source</a>.</span><span data-ar>يحل الجبر خطوة بخطوة، لتفهم السبب لا الجواب فقط. محرك الحل <a href="https://github.com/ahmad-almazeedi/AnimathSolver">مفتوح المصدر</a>.</span></p>
-        </article>
-
-        <!-- iLostCount -->
-        <article class="card rise" style="--i:7" aria-labelledby="t-ilc">
-          <div class="card-top">
-            <svg class="icon" viewBox="0 0 56 56" width="52" height="52" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M17 19v18M24.3 19v18M31.7 19v18M39 19v18M12.5 33.5l31-11"/></svg>
-            <div>
-              <h3 id="t-ilc">iLostCount</h3>
-              <p class="kind"><span data-en>Web · no signup</span><span data-ar>ويب · بدون تسجيل</span></p>
-            </div>
-            <a class="go" href="https://ilostcount.com/"><span>ilostcount.com</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8.5 7H17v8.5"/></svg></a>
-          </div>
-          <div class="try count">
-            <label class="sr" for="txt"><span data-en>Text to count</span><span data-ar>النص المراد عدّه</span></label>
-            <textarea id="txt" spellcheck="false"></textarea>
-            <dl class="tally">
-              <div><dt><span data-en>characters</span><span data-ar>حرف</span></dt><dd id="n-c">0</dd></div>
-              <div><dt><span data-en>words</span><span data-ar>كلمة</span></dt><dd id="n-w">0</dd></div>
-              <div><dt><span data-en>AI tokens, approx.</span><span data-ar>توكن تقريبًا</span></dt><dd id="n-t">0</dd></div>
-              <div><dt><span data-en>to say aloud</span><span data-ar>للنطق</span></dt><dd id="n-s">0s</dd></div>
-            </dl>
-            <p class="private"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><span data-en>Counted in your browser. Nothing is sent anywhere.</span><span data-ar>يُعدّ داخل متصفحك. لا يُرسل أي شيء.</span></p>
-          </div>
-          <p class="desc"><span data-en>Counts characters, words, AI tokens and speaking time. Fast, private, and free.</span><span data-ar>يعدّ الحروف والكلمات وتوكنات الذكاء الاصطناعي ومدة النطق. سريع وخاص ومجاني.</span></p>
-        </article>
-
-      </div>
-    </section>
-
-    <section class="made" aria-labelledby="made-h">
-      <h2 id="made-h"><span data-en>This page follows the same rule.</span><span data-ar>وهذه الصفحة تتبع القاعدة نفسها.</span></h2>
-      <ul>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg><span><b><span data-en>Two languages</span><span data-ar>لغتان</span></b><span data-en>English and Arabic, with proper right-to-left.</span><span data-ar>العربية والإنجليزية، مع اتجاه صحيح من اليمين لليسار.</span></span></li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9Z"/></svg><span><b><span data-en>Light and dark</span><span data-ar>فاتح وداكن</span></b><span data-en>It follows your device setting.</span><span data-ar>تتبع إعداد جهازك.</span></span></li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="6" width="19" height="12" rx="2"/><path d="M6 10h.01M10 10h.01M14 10h.01M18 10h.01M7 14h10"/></svg><span><b><span data-en>Keyboard and screen reader</span><span data-ar>لوحة المفاتيح وقارئ الشاشة</span></b><span data-en>Every demo works without a mouse.</span><span data-ar>كل تجربة تعمل بدون فأرة.</span></span></li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 4 6v6c0 4.5 3.4 8.3 8 9 4.6-.7 8-4.5 8-9V6l-8-3Z"/><path d="m9 12 2 2 4-4"/></svg><span><b><span data-en>No trackers, no cookies</span><span data-ar>بلا تتبع ولا كوكيز</span></b><span data-en>No frameworks. Loads fast on any phone.</span><span data-ar>بلا أطر عمل ثقيلة، تفتح بسرعة على أي هاتف.</span></span></li>
-      </ul>
-    </section>
+    <ul class="apps fade" style="--i:3" aria-label="Work">
+      <li><a href="https://atmita.com/"><img src="/assets/icons/atmita.png" alt="" width="68" height="68"><b>Atmita</b><span>Personal AI agent</span></a></li>
+      <li><a href="https://apps.apple.com/us/app/haseba-calculator-converter/id1121281655"><img src="/assets/icons/haseba.png" alt="" width="68" height="68"><b>Haseba</b><span>Calculator, 1.3M downloads</span></a></li>
+      <li><a href="https://apps.apple.com/us/app/animath-ai-tutor-solver/id1615638274"><img src="/assets/icons/animath.png" alt="" width="68" height="68"><b>Animath</b><span>Algebra, step by step</span></a></li>
+      <li><a href="https://ilostcount.com/"><img src="/assets/icons/ilostcount.png" alt="" width="68" height="68"><b>iLostCount</b><span>Word and token counter</span></a></li>
+    </ul>
   </main>
 
   <footer class="foot">
@@ -445,225 +99,9 @@ html[lang="ar"] .made h2 { letter-spacing: 0; line-height: 1.4; }
       <a href="https://github.com/ahmad-almazeedi">GitHub</a>
       <a href="https://x.com/Ahmad_ALMazeedi">X</a>
       <a href="https://www.linkedin.com/in/ahmad-almazeedi-b4657ba8">LinkedIn</a>
-      <a href="https://apps.apple.com/us/developer/ahmad-almazeedi/id1121281654">App Store</a>
     </nav>
-    <span>© 2026 <span data-en>Ahmad Almazeedi</span><span data-ar>أحمد المزيدي</span></span>
+    <span>© 2026</span>
   </footer>
 </div>
-
-<script>
-(function () {
-  var root = document.documentElement;
-  var isAr = function () { return root.lang === 'ar'; };
-
-  /* Language */
-  var hooks = [];
-  function setLang(l) {
-    root.lang = l; root.dir = l === 'ar' ? 'rtl' : 'ltr';
-    try { localStorage.setItem('lang', l); } catch (e) {}
-    document.querySelectorAll('.lang button').forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.set === l)); });
-    document.title = l === 'ar' ? 'أحمد المزيدي: برمجيات صُنعت للجميع' : 'Ahmad Almazeedi: software made for everyone';
-    hooks.forEach(function (f) { f(); });
-  }
-  document.querySelectorAll('.lang button').forEach(function (b) { b.addEventListener('click', function () { setLang(b.dataset.set); }); });
-
-  /* Clock */
-  var clock = document.getElementById('clock');
-  if (window.Intl) {
-    var fmt = new Intl.DateTimeFormat('en-GB', { timeZone: 'Asia/Kuwait', hour: '2-digit', minute: '2-digit' });
-    var tick = function () { clock.textContent = fmt.format(new Date()); };
-    tick(); setInterval(tick, 15000);
-  }
-
-  /* Atmita demo */
-  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var scenes = {
-    en: [
-      ['Watch my inbox and only tell me when something needs me.', 'Inbox watch', 'Runs on every new email'],
-      ['Every morning, send me the three news stories that matter for my work.', 'Morning brief', 'Every day at 7:00'],
-      ['Remind me to reorder my contact lenses before I run out.', 'Restock reminder', 'Checks every week']
-    ],
-    ar: [
-      ['راقب بريدي وأخبرني فقط عندما يحتاجني شيء.', 'مراقبة البريد', 'تعمل مع كل رسالة جديدة'],
-      ['كل صباح، أرسل لي أهم ثلاثة أخبار تخص عملي.', 'موجز الصباح', 'كل يوم الساعة 7:00'],
-      ['ذكّرني بطلب العدسات قبل أن تنفد.', 'تذكير إعادة الطلب', 'يتحقق كل أسبوع']
-    ]
-  };
-  var say = document.getElementById('say'), job = document.getElementById('job');
-  var jt = document.getElementById('job-t'), jw = document.getElementById('job-w'), dots = document.getElementById('dots');
-  var idx = 0, timer = null;
-  scenes.en.forEach(function (_, i) {
-    var b = document.createElement('button'); b.type = 'button'; b.setAttribute('aria-label', 'Example ' + (i + 1));
-    b.addEventListener('click', function () { play(i); }); dots.appendChild(b);
-  });
-  function play(i) {
-    clearTimeout(timer); idx = i;
-    var s = scenes[isAr() ? 'ar' : 'en'][i];
-    [].forEach.call(dots.children, function (d, j) { d.setAttribute('aria-current', String(j === i)); });
-    job.classList.remove('show'); jt.textContent = s[1]; jw.textContent = s[2];
-    if (reduce) { say.textContent = s[0]; job.classList.add('show'); timer = setTimeout(function () { play((i + 1) % 3); }, 6000); return; }
-    var n = 0; say.textContent = '';
-    (function type() {
-      n++; say.textContent = s[0].slice(0, n);
-      if (n < s[0].length) timer = setTimeout(type, 28 + Math.random() * 30);
-      else timer = setTimeout(function () { job.classList.add('show'); timer = setTimeout(function () { play((i + 1) % 3); }, 3600); }, 450);
-    })();
-  }
-  play(0);
-  hooks.push(function () { play(idx); });
-
-  /* Haseba calculator */
-  var out = document.getElementById('c-out'), expEl = document.getElementById('c-exp');
-  var cur = '0', prev = null, op = null, fresh = false;
-  var sym = { '+': '+', '-': '−', '*': '×', '/': '÷' };
-  function fmtN(x) {
-    if (!isFinite(x)) return isAr() ? 'خطأ' : 'Error';
-    var r = parseFloat(x.toPrecision(12));
-    return Math.abs(r) >= 1e12 ? r.toExponential(4) : String(r);
-  }
-  function calc(a, b, o) { return o === '+' ? a + b : o === '-' ? a - b : o === '*' ? a * b : b === 0 ? NaN : a / b; }
-  function show() {
-    out.textContent = cur.replace(/^-/, '−').replace(/\B(?=(\d{3})+(?!\d))(?=[^.]*$)/g, ',');
-    expEl.textContent = prev !== null && op ? fmtN(prev).replace(/^-/, '−') + ' ' + sym[op] : '';
-  }
-  function press(k) {
-    if (/\d/.test(k)) { cur = fresh || cur === '0' ? k : (cur.length < 14 ? cur + k : cur); fresh = false; }
-    else if (k === '.') { if (fresh) { cur = '0.'; fresh = false; } else if (cur.indexOf('.') < 0) cur += '.'; }
-    else if (k === 'c') { cur = '0'; prev = null; op = null; }
-    else if (k === 'neg') { cur = cur.charAt(0) === '-' ? cur.slice(1) : (cur === '0' ? cur : '-' + cur); }
-    else if (k === '%') { cur = fmtN(parseFloat(cur) / 100); fresh = true; }
-    else if (k === '=') { if (op !== null) { var r = fmtN(calc(prev, parseFloat(cur), op)); expEl.textContent = ''; cur = r; prev = null; op = null; fresh = true; out.textContent = r; return; } }
-    else { if (op !== null && !fresh) { cur = fmtN(calc(prev, parseFloat(cur), op)); } prev = parseFloat(cur); op = k; fresh = true; }
-    show();
-  }
-  document.querySelectorAll('#calc button').forEach(function (b) { b.addEventListener('click', function () { press(b.dataset.k); }); });
-  var calcEl = document.getElementById('calc');
-  calcEl.addEventListener('keydown', function (e) {
-    var map = { Enter: '=', Escape: 'c', Backspace: 'c', x: '*', X: '*' };
-    var k = map[e.key] || e.key;
-    if (/^[\d.+\-*/%=]$/.test(k) || k === 'c') { e.preventDefault(); press(k); }
-  });
-  show();
-
-  /* Animath solver: linear equations in x, shown step by step */
-  function parseSide(s) {
-    // returns {a, b} meaning a*x + b, supports + - * / numbers, x, parentheses with a number factor
-    s = s.replace(/\s+/g, '').replace(/[−–]/g, '-').replace(/×/g, '*').replace(/÷/g, '/').replace(/X/g, 'x');
-    var i = 0;
-    function peek() { return s[i]; }
-    function num() { var m = /^\d*\.?\d+/.exec(s.slice(i)); if (!m) return null; i += m[0].length; return parseFloat(m[0]); }
-    function factor() {
-      var c = peek();
-      if (c === '-') { i++; var f = factor(); return { a: -f.a, b: -f.b }; }
-      if (c === '+') { i++; return factor(); }
-      if (c === '(') { i++; var e = expr(); if (peek() !== ')') throw 0; i++; return e; }
-      var n = num();
-      if (n !== null) {
-        if (peek() === 'x') { i++; return { a: n, b: 0 }; }
-        if (peek() === '(') { var g = factor(); return { a: n * g.a, b: n * g.b }; }
-        return { a: 0, b: n };
-      }
-      if (c === 'x') { i++; return { a: 1, b: 0 }; }
-      throw 0;
-    }
-    function term() {
-      var t = factor();
-      while (peek() === '*' || peek() === '/') {
-        var o = s[i++], f = factor();
-        if (o === '*') { if (t.a && f.a) throw 0; t = { a: t.a * f.b + f.a * t.b, b: t.b * f.b }; }
-        else { if (f.a || f.b === 0) throw 0; t = { a: t.a / f.b, b: t.b / f.b }; }
-      }
-      return t;
-    }
-    function expr() {
-      var t = term();
-      while (peek() === '+' || peek() === '-') { var o = s[i++], u = term(); t = o === '+' ? { a: t.a + u.a, b: t.b + u.b } : { a: t.a - u.a, b: t.b - u.b }; }
-      return t;
-    }
-    var r = expr(); if (i !== s.length) throw 0; return r;
-  }
-  function gcd(a, b) { return b ? gcd(b, a % b) : Math.abs(a); }
-  function fr(v) {
-    v = parseFloat(v.toPrecision(12));
-    if (Number.isInteger(v)) return String(v).replace('-', '−');
-    for (var d = 2; d <= 1000; d++) { var n = v * d; if (Math.abs(n - Math.round(n)) < 1e-9) { n = Math.round(n); var g = gcd(n, d); return (n / g < 0 ? '−' : '') + Math.abs(n / g) + '/' + d / g; } }
-    return String(+v.toFixed(4)).replace('-', '−');
-  }
-  function lin(a, b) {
-    var fa = fr(Math.abs(a)), sg = a < 0 ? '−' : '';
-    var xs = a === 0 ? '' : Math.abs(a) === 1 ? sg + 'x' : fa.indexOf('/') < 0 ? sg + fa + 'x' : fa.indexOf('1/') === 0 ? sg + 'x/' + fa.slice(2) : sg + '(' + fa + ')x';
-    if (!xs) return fr(b);
-    if (b === 0) return xs;
-    return xs + (b < 0 ? ' − ' : ' + ') + fr(Math.abs(b));
-  }
-  var stepsEl = document.getElementById('steps'), eqIn = document.getElementById('eq');
-  var T = {
-    en: { start: 'The equation', move: 'Move the x terms left and the numbers right', simp: 'Combine like terms', div: 'Divide both sides by ', ans: 'Answer', bad: 'Try an equation like 3x + 4 = 19', none: 'No value of x works', all: 'Every value of x works', check: 'Check: both sides equal ', swap: 'Swap the two sides', mul: 'Multiply both sides by ' },
-    ar: { start: 'المعادلة', move: 'ننقل حدود x لليسار والأعداد لليمين', simp: 'نجمع الحدود المتشابهة', div: 'نقسم الطرفين على ', ans: 'الجواب', bad: 'جرّب معادلة مثل 3x + 4 = 19', none: 'لا توجد قيمة لـ x تحقق المعادلة', all: 'كل قيم x تحقق المعادلة', check: 'تحقق: الطرفان يساويان ', swap: 'نبدّل الطرفين', mul: 'نضرب الطرفين في ' }
-  };
-  function solve() {
-    var t = T[isAr() ? 'ar' : 'en'], raw = eqIn.value, rows = [];
-    stepsEl.innerHTML = '';
-    try {
-      var parts = raw.split('='); if (parts.length !== 2) throw 0;
-      var L = parseSide(parts[0]), R = parseSide(parts[1]);
-      if (L.a === 0 && R.a === 0) throw 0;
-      var clean0 = null;
-      if (L.a === 0) { var tmp = L; L = R; R = tmp; clean0 = true; }
-      var clean = raw.replace(/\s*\/\s*/g, '/').replace(/\s*([=+\-−*])\s*/g, ' $1 ').replace(/-/g, '−').replace(/\*/g, '×').replace(/\s+/g, ' ').replace(/\( /g, '(').replace(/ \)/g, ')').trim();
-      rows.push([clean, t.start]);
-      if (clean0) rows.push([lin(L.a, L.b) + ' = ' + lin(R.a, R.b), t.swap]);
-      var A = L.a - R.a, B = R.b - L.b;
-      var lhsNow = lin(L.a, L.b) + ' = ' + lin(R.a, R.b);
-      if (lhsNow !== rows[rows.length - 1][0]) rows.push([lhsNow, t.simp]);
-      if (R.a !== 0 || L.b !== 0) {
-        var l = (R.a !== 0 ? lin(L.a, 0) + (R.a > 0 ? ' − ' : ' + ') + lin(Math.abs(R.a), 0) : lin(L.a, 0));
-        var r = (L.b !== 0 ? fr(R.b) + (L.b > 0 ? ' − ' : ' + ') + fr(Math.abs(L.b)) : fr(R.b));
-        rows.push([l + ' = ' + r, t.move]);
-      }
-      if (A === 0) { rows.push([fr(0) + ' = ' + fr(B), B === 0 ? t.all : t.none, true]); }
-      else {
-        if (rows[rows.length - 1][0] !== lin(A, 0) + ' = ' + fr(B)) rows.push([lin(A, 0) + ' = ' + fr(B), t.simp]);
-        var x = B / A;
-        var inv = 1 / A, par = function (v) { return v < 0 ? '(' + fr(v) + ')' : fr(v); };
-        if (A !== 1 && Math.abs(inv - Math.round(inv)) < 1e-9 && Math.abs(A) < 1) rows.push(['x = ' + fr(B) + ' × ' + par(Math.round(inv)), t.mul + fr(Math.round(inv))]);
-        else if (A !== 1) rows.push(['x = ' + fr(B) + ' ÷ ' + par(A), t.div + fr(A)]);
-        rows.push(['x = ' + fr(x), t.check + fr(L.a * x + L.b), true]);
-      }
-    } catch (e) { rows = [['—', t.bad]]; }
-    rows.forEach(function (r, k) {
-      var li = document.createElement('li'); li.style.setProperty('--i', k);
-      if (r[2]) li.className = 'final';
-      var m = document.createElement('span'); m.className = 'm'; m.textContent = r[0];
-      var n = document.createElement('span'); n.className = 'n'; n.textContent = r[1];
-      var w = document.createElement('span'); w.appendChild(m); w.appendChild(n); li.appendChild(w); stepsEl.appendChild(li);
-    });
-  }
-  document.getElementById('eq-form').addEventListener('submit', function (e) { e.preventDefault(); solve(); });
-  document.querySelectorAll('.eq-ex button').forEach(function (b) { b.addEventListener('click', function () { eqIn.value = b.textContent; solve(); }); });
-  solve();
-  hooks.push(solve);
-
-  /* iLostCount */
-  var txt = document.getElementById('txt');
-  var sample = { en: 'Useful and beautiful software, made for everyone. Paste anything here and watch it count.', ar: 'برمجيات مفيدة وجميلة، صُنعت للجميع. الصق أي نص هنا وشاهده يُعدّ.' };
-  var touched = false;
-  function count() {
-    var v = txt.value, words = (v.trim().match(/\S+/g) || []).length;
-    var chars = Array.from(v).length;
-    var tokens = v.trim() ? Math.max(1, Math.round(/[\u0600-\u06FF]/.test(v) ? chars / 2.5 : chars / 4)) : 0;
-    var sec = Math.round(words / 150 * 60);
-    document.getElementById('n-c').textContent = chars.toLocaleString('en');
-    document.getElementById('n-w').textContent = words.toLocaleString('en');
-    document.getElementById('n-t').textContent = tokens.toLocaleString('en');
-    document.getElementById('n-s').textContent = sec < 60 ? sec + 's' : Math.floor(sec / 60) + 'm ' + (sec % 60) + 's';
-  }
-  function fill() { if (!touched) { txt.value = sample[isAr() ? 'ar' : 'en']; count(); } }
-  txt.addEventListener('input', function () { touched = true; count(); });
-  fill(); hooks.push(fill);
-
-  setLang(root.lang === 'ar' ? 'ar' : 'en');
-})();
-</script>
 </body>
 </html>
