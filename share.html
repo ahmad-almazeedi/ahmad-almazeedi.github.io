@@ -1,26 +1,19 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8"><meta name="robots" content="noindex"><title>Share card</title>
 <style>
-@font-face { font-family: "Newsreader"; src: url("/assets/fonts/newsreader.woff2") format("woff2"); font-weight: 200 800; }
-@font-face { font-family: "Inter"; src: url("/assets/fonts/inter.woff2") format("woff2"); font-weight: 100 900; }
-@font-face { font-family: "Amiri Name"; src: url("/assets/fonts/amiri-name.woff2") format("woff2"); }
+@font-face { font-family: "Nunito"; src: url("/assets/fonts/nunito-latin.woff2") format("woff2"); font-weight: 200 1000; }
+@font-face { font-family: "Baloo Bhaijaan 2"; src: url("/assets/fonts/baloo-bhaijaan-2-arabic.woff2") format("woff2"); font-weight: 400 800; }
 html,body{margin:0}
-body{width:1200px;height:630px;background:#F5F3EE;color:#141513;font-family:"Inter",sans-serif;display:flex;flex-direction:column;justify-content:space-between;padding:60px 80px;box-sizing:border-box;-webkit-font-smoothing:antialiased}
-.top{display:flex;align-items:center;gap:18px;font-size:26px;font-weight:500}
-.top .ar{font-family:"Amiri Name",serif;font-weight:400;font-size:32px;color:#0B6E7C}
-h1{margin:0;font-family:"Newsreader",serif;font-weight:300;font-size:104px;line-height:.98;letter-spacing:-0.04em;max-width:1000px}
-h1 em{font-style:normal;color:#0B6E7C}
-.apps{display:flex;align-items:center;gap:14px}
-.apps img,.apps svg{width:64px;height:64px;border-radius:15px;box-shadow:0 0 0 1px rgba(20,21,19,.1)}
-.apps svg{background:#121614;color:#F2F4F1}
-.apps span{margin-left:12px;font-size:24px;color:#63655F}
+body{width:1200px;height:630px;background:#0D0E0D;color:#EEEFEB;font-family:"Nunito",sans-serif;display:flex;flex-direction:column;justify-content:center;gap:22px;padding:0 90px;box-sizing:border-box;-webkit-font-smoothing:antialiased}
+h1{margin:0;font-weight:900;font-size:112px;line-height:1;letter-spacing:-0.035em}
+.ar{font-family:"Baloo Bhaijaan 2",sans-serif;font-weight:800;font-size:80px;line-height:1.2;color:#6FD0DC}
+p{margin:10px 0 0;font-weight:700;font-size:36px;color:#9A9E97}
+.apps{position:absolute;right:90px;top:70px;display:flex;gap:14px}
+.apps img{width:64px;height:64px;border-radius:15px}
 </style></head>
 <body>
-<div class="top"><span>Ahmad Almazeedi</span><span class="ar" lang="ar" dir="rtl">أحمد المزيدي</span></div>
-<h1>Useful and beautiful software, <em>made for everyone.</em></h1>
-<div class="apps">
-<img src="/assets/icons/atmita.png" alt=""><img src="/assets/icons/haseba.png" alt=""><img src="/assets/icons/animath.png" alt="">
-<svg viewBox="0 0 56 56" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M17 19v18M24.3 19v18M31.7 19v18M39 19v18M12.5 33.5l31-11"/></svg>
-<span>Try each one at ahmad-almazeedi.github.io</span>
-</div>
+<div class="apps"><img src="/assets/icons/atmita.png"><img src="/assets/icons/haseba.png"><img src="/assets/icons/animath.png"><img src="/assets/icons/ilostcount.png"></div>
+<h1>Ahmad Almazeedi</h1>
+<div class="ar" lang="ar" dir="rtl" style="text-align:left">أحمد المزيدي</div>
+<p>Useful and beautiful software, made for everyone.</p>
 </body></html>

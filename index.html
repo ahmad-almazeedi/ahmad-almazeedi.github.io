@@ -6,8 +6,8 @@
 <title>Ahmad Almazeedi</title>
 <meta name="description" content="Ahmad Almazeedi, software engineer in Kuwait. Useful and beautiful software, made for everyone: Atmita, Haseba, Animath and iLostCount.">
 <link rel="canonical" href="https://ahmad-almazeedi.github.io/">
-<meta name="theme-color" content="#FAFAF8" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#0E0F0E" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#F7F7F4" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0D0E0D" media="(prefers-color-scheme: dark)">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Ahmad Almazeedi">
 <meta property="og:description" content="Useful and beautiful software, made for everyone.">
@@ -17,56 +17,71 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-<link rel="preload" href="/assets/fonts/newsreader.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/assets/fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preload" href="/assets/fonts/nunito-latin.woff2" as="font" type="font/woff2" crossorigin>
 <style>
-@font-face { font-family: "Newsreader"; src: url("/assets/fonts/newsreader.woff2") format("woff2"); font-weight: 200 800; font-display: swap; }
-@font-face { font-family: "Inter"; src: url("/assets/fonts/inter.woff2") format("woff2"); font-weight: 100 900; font-display: swap; }
-@font-face { font-family: "Amiri Name"; src: url("/assets/fonts/amiri-name.woff2") format("woff2"); font-display: swap; }
+@font-face { font-family: "Nunito"; src: url("/assets/fonts/nunito-latin.woff2") format("woff2"); font-weight: 200 1000; font-display: swap; }
+@font-face { font-family: "Baloo Bhaijaan 2"; src: url("/assets/fonts/baloo-bhaijaan-2-arabic.woff2") format("woff2"); font-weight: 400 800; font-display: swap; }
 :root {
   color-scheme: light dark;
-  --bg: #FAFAF8; --ink: #151715; --soft: #6B6F69; --line: rgba(21,23,21,.10); --accent: #0B6E7C;
-  --serif: "Newsreader", Georgia, serif;
-  --sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --pad: clamp(1.5rem, 6vw, 6rem);
+  --bg: #F7F7F4; --ink: #141614; --soft: #71756F; --line: rgba(20,22,20,.08); --accent: #0B7A88;
+  --font: "Nunito", ui-rounded, "SF Pro Rounded", system-ui, sans-serif;
+  --heavy: 900;
+  --pad: clamp(1.25rem, 5vw, 5rem);
+  --t-atmita: linear-gradient(150deg, #EDE7FF, #DDEBFF 55%, #FFE7DA);
+  --t-haseba: linear-gradient(150deg, #F1F1EE, #E4E4DF);
+  --t-animath: linear-gradient(150deg, #FFE3EF, #DDF6EE);
+  --t-ilc: linear-gradient(150deg, #FFE6EC, #FFEBDD 50%, #DDF5EE);
 }
 @media (prefers-color-scheme: dark) {
-  :root { --bg: #0E0F0E; --ink: #ECEDE9; --soft: #969A93; --line: rgba(236,237,233,.11); --accent: #78C9D3; }
+  :root {
+    --bg: #0D0E0D; --ink: #EEEFEB; --soft: #9A9E97; --line: rgba(238,239,235,.09); --accent: #6FD0DC;
+    --t-atmita: linear-gradient(150deg, #231A45, #12203D 55%, #2E1A14);
+    --t-haseba: linear-gradient(150deg, #1E1F1E, #161716);
+    --t-animath: linear-gradient(150deg, #3A1628, #0F2C25);
+    --t-ilc: linear-gradient(150deg, #3A1622, #33200F 50%, #0F2C25);
+  }
 }
 * { box-sizing: border-box; }
-body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--sans); font-size: 1.0625rem; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--font); font-size: 1.0625rem; line-height: 1.55; -webkit-font-smoothing: antialiased; }
 a { color: inherit; text-decoration: none; }
-a:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 6px; }
+a:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; border-radius: 2rem; }
 ::selection { background: var(--accent); color: var(--bg); }
 
-.page { max-width: 72rem; margin: 0 auto; padding: 0 var(--pad); min-height: 100vh; min-height: 100svh; display: flex; flex-direction: column; }
+.page { max-width: 74rem; margin: 0 auto; padding: 0 var(--pad); min-height: 100vh; min-height: 100svh; display: flex; flex-direction: column; }
+.top { display: flex; justify-content: space-between; gap: 1rem; padding-block: 2rem; color: var(--soft); font-weight: 600; }
 
-.top { display: flex; justify-content: space-between; gap: 1rem; padding-block: 2.25rem; color: var(--soft); font-size: .9375rem; }
+.hero { padding-block: clamp(3rem, 11vh, 7rem) clamp(3.5rem, 10vh, 6rem); }
+h1 { margin: 0; display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: .1em .6em; font-weight: var(--heavy); font-size: clamp(3rem, 9vw, 7.5rem); line-height: .98; letter-spacing: -0.035em; }
+h1 .ar { font-family: "Baloo Bhaijaan 2", var(--font); font-weight: 800; font-size: .72em; letter-spacing: 0; line-height: 1.2; color: var(--accent); }
+.line { margin: 1.5rem 0 0; font-weight: 700; font-size: clamp(1.3rem, 2.4vw, 1.75rem); line-height: 1.3; color: var(--soft); letter-spacing: -0.01em; }
 
-.hero { padding-block: clamp(3.5rem, 13vh, 8rem) clamp(4.5rem, 13vh, 8rem); }
-h1 { margin: 0; display: grid; gap: .12em; font-family: var(--serif); font-weight: 300; font-size: clamp(3.25rem, 10.5vw, 8.75rem); line-height: .95; letter-spacing: -0.04em; }
-h1 .ar { font-family: "Amiri Name", serif; font-weight: 400; font-size: .6em; line-height: 1.4; letter-spacing: 0; color: var(--accent); }
-.line { margin: clamp(1.75rem, 4vh, 2.75rem) 0 0; font-family: var(--serif); font-weight: 350; font-size: clamp(1.35rem, 2.4vw, 1.85rem); line-height: 1.35; letter-spacing: -0.01em; color: var(--soft); text-wrap: balance; }
+.apps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(2rem, 3.5vw, 3rem) clamp(.875rem, 1.6vw, 1.25rem); }
+.apps a { display: grid; gap: 1rem; }
+.shot { position: relative; aspect-ratio: 5 / 4; border-radius: 2rem; overflow: hidden; box-shadow: inset 0 0 0 1px var(--line); }
+.apps li:nth-child(1) .shot { background: var(--t-atmita); }
+.apps li:nth-child(2) .shot { background: var(--t-haseba); }
+.apps li:nth-child(3) .shot { background: var(--t-animath); }
+.apps li:nth-child(4) .shot { background: var(--t-ilc); }
+.shot img { position: absolute; display: block; height: auto; box-shadow: 0 0 0 1px rgba(0,0,0,.08), 0 30px 60px -24px rgba(0,0,0,.4); }
+.shot.web img { left: 9%; top: 13%; width: 112%; border-radius: .9rem; }
+.shot.phone img { left: 50%; top: 12%; width: 42%; transform: translateX(-50%); border-radius: 1.75rem 1.75rem 0 0; box-shadow: 0 0 0 7px #151615, 0 0 0 8px rgba(255,255,255,.08), 0 40px 70px -20px rgba(0,0,0,.45); }
+.cap { display: flex; align-items: center; gap: .75rem; padding-inline: .25rem; }
+.cap img { width: 2.5rem; height: 2.5rem; border-radius: 23%; box-shadow: 0 0 0 1px var(--line); }
+.cap b { font-weight: var(--heavy); font-size: 1.375rem; letter-spacing: -0.02em; }
+.cap span { margin-inline-start: auto; color: var(--soft); font-weight: 700; }
 
-.apps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 2.5rem; }
-.apps a { display: grid; gap: .25rem; }
-.apps img { width: 4.25rem; height: 4.25rem; border-radius: 23%; box-shadow: 0 0 0 1px var(--line); margin-bottom: .85rem; transition: transform .35s cubic-bezier(.2,.7,.2,1); }
-.apps b { font-family: var(--serif); font-weight: 400; font-size: 1.5rem; letter-spacing: -0.015em; transition: color .2s; }
-.apps span { color: var(--soft); font-size: .9688rem; }
-@media (hover: hover) {
-  .apps a:hover img { transform: translateY(-4px); }
-  .apps a:hover b { color: var(--accent); }
-}
-
-.foot { margin-top: auto; padding-block: 5.5rem 2.25rem; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; color: var(--soft); font-size: .9375rem; }
+.foot { margin-top: auto; padding-block: 4.5rem 2rem; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; color: var(--soft); font-weight: 600; }
 .foot nav { display: flex; gap: 1.75rem; }
 .foot a:hover { color: var(--ink); }
 
-@media (max-width: 52rem) { .apps { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2.5rem 1.5rem; } }
-
+@media (max-width: 44rem) {
+  .apps { grid-template-columns: 1fr; }
+  h1 { flex-direction: column; align-items: flex-start; }
+}
 @media (prefers-reduced-motion: no-preference) {
-  .fade { animation: fade 1s cubic-bezier(.2,.7,.2,1) both; animation-delay: calc(var(--i, 0) * 120ms); }
-  @keyframes fade { from { opacity: 0; transform: translateY(8px); } }
+  .fade { animation: fade .9s cubic-bezier(.2,.7,.2,1) both; animation-delay: calc(var(--i, 0) * 110ms); }
+  @keyframes fade { from { opacity: 0; transform: translateY(10px); } }
 }
 </style>
 </head>
@@ -86,11 +101,23 @@ h1 .ar { font-family: "Amiri Name", serif; font-weight: 400; font-size: .6em; li
       <p class="line fade" style="--i:2">Useful and beautiful software, made for everyone.</p>
     </section>
 
-    <ul class="apps fade" style="--i:3" aria-label="Work">
-      <li><a href="https://atmita.com/"><img src="/assets/icons/atmita.png" alt="" width="68" height="68"><b>Atmita</b><span>Personal AI agent</span></a></li>
-      <li><a href="https://apps.apple.com/us/app/haseba-calculator-converter/id1121281655"><img src="/assets/icons/haseba.png" alt="" width="68" height="68"><b>Haseba</b><span>Calculator, 1.3M downloads</span></a></li>
-      <li><a href="https://apps.apple.com/us/app/animath-ai-tutor-solver/id1615638274"><img src="/assets/icons/animath.png" alt="" width="68" height="68"><b>Animath</b><span>Algebra, step by step</span></a></li>
-      <li><a href="https://ilostcount.com/"><img src="/assets/icons/ilostcount.png" alt="" width="68" height="68"><b>iLostCount</b><span>Word and token counter</span></a></li>
+    <ul class="apps" aria-label="Work">
+      <li class="fade" style="--i:3"><a href="https://atmita.com/">
+        <div class="shot web"><img src="/assets/shots/atmita.webp" alt="" width="1100" height="689" loading="lazy"></div>
+        <div class="cap"><img src="/assets/icons/atmita.png" alt="" width="40" height="40"><b>Atmita</b><span>AI agent</span></div>
+      </a></li>
+      <li class="fade" style="--i:4"><a href="https://apps.apple.com/us/app/haseba-calculator-converter/id1121281655">
+        <div class="shot phone"><picture><source srcset="/assets/shots/haseba-dark.webp" media="(prefers-color-scheme: dark)"><img src="/assets/shots/haseba-light.webp" alt="" width="468" height="989" loading="lazy"></picture></div>
+        <div class="cap"><img src="/assets/icons/haseba.png" alt="" width="40" height="40"><b>Haseba</b><span>1.3M downloads</span></div>
+      </a></li>
+      <li class="fade" style="--i:5"><a href="https://apps.apple.com/us/app/animath-ai-tutor-solver/id1615638274">
+        <div class="shot phone"><img src="/assets/shots/animath.webp" alt="" width="468" height="989" loading="lazy"></div>
+        <div class="cap"><img src="/assets/icons/animath.png" alt="" width="40" height="40"><b>Animath</b><span>Algebra</span></div>
+      </a></li>
+      <li class="fade" style="--i:6"><a href="https://ilostcount.com/">
+        <div class="shot web"><picture><source srcset="/assets/shots/ilc-dark.webp" media="(prefers-color-scheme: dark)"><img src="/assets/shots/ilc-light.webp" alt="" width="1100" height="706" loading="lazy"></picture></div>
+        <div class="cap"><img src="/assets/icons/ilostcount.png" alt="" width="40" height="40"><b>iLostCount</b><span>Counter</span></div>
+      </a></li>
     </ul>
   </main>
 
