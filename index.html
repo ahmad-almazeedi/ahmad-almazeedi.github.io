@@ -28,11 +28,11 @@
   --font: "Nunito", ui-rounded, "SF Pro Rounded", system-ui, sans-serif;
   --heavy: 900;
   --pad: clamp(1.25rem, 5vw, 5rem);
-  --tile: #EFEFEB; --glow: .45; --lift: 1.9;
+  --tile: #EFEFEB; --glow: .45; --lift: 1.9; --emoji-glow: .32;
 }
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #0D0E0D; --tile: #161716; --glow: .55; --lift: 1; --ink: #EEEFEB; --soft: #9A9E97; --line: rgba(238,239,235,.09); --accent: #6FD0DC;
+    --bg: #0D0E0D; --tile: #161716; --glow: .55; --lift: 1; --emoji-glow: .4; --ink: #EEEFEB; --soft: #9A9E97; --line: rgba(238,239,235,.09); --accent: #6FD0DC;
   }
 }
 * { box-sizing: border-box; }
@@ -54,6 +54,8 @@ h1 .ar { font-family: "Baloo Bhaijaan 2", var(--font); font-weight: 800; font-si
 .tile { position: relative; display: grid; place-items: center; aspect-ratio: 5 / 4; border-radius: 2.25rem; overflow: hidden; background: var(--tile); isolation: isolate; }
 .tile .glow { position: absolute; inset: -30%; width: 160%; height: 160%; object-fit: cover; filter: blur(80px) saturate(2.2) brightness(var(--lift)); opacity: var(--glow); z-index: -1; }
 .tile .icon { width: 46%; height: auto; aspect-ratio: 1; border-radius: 23%; box-shadow: 0 0 0 1px rgba(255,255,255,.06), 0 40px 80px -30px rgba(0,0,0,.55); }
+.tile.emoji { background: radial-gradient(60% 70% at 50% 50%, rgba(56,132,255,var(--emoji-glow)), transparent 75%), var(--tile); }
+.tile.emoji .icon { width: auto; aspect-ratio: auto; border-radius: 0; box-shadow: none; font-size: clamp(6rem, 17vw, 13rem); line-height: 1; font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif; filter: drop-shadow(0 30px 40px rgba(0,0,0,.35)); }
 .cap { display: flex; align-items: baseline; gap: .75rem; padding-inline: .35rem; }
 .cap b { font-weight: var(--heavy); font-size: 1.5rem; letter-spacing: -0.02em; }
 .cap span { margin-inline-start: auto; color: var(--soft); font-weight: 700; }
@@ -102,7 +104,7 @@ h1 .ar { font-family: "Baloo Bhaijaan 2", var(--font); font-weight: 800; font-si
         <div class="cap"><b>Animath</b><span>Algebra</span></div>
       </a></li>
       <li class="fade" style="--i:6"><a href="https://ilostcount.com/">
-        <div class="tile"><img class="glow" src="/assets/icons/ilostcount.png" alt=""><img class="icon" src="/assets/icons/ilostcount.png" alt="" width="360" height="360"></div>
+        <div class="tile emoji"><span class="icon" role="img" aria-label="iLostCount">🔢</span></div>
         <div class="cap"><b>iLostCount</b><span>Counter</span></div>
       </a></li>
     </ul>
