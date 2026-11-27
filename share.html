@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8"><meta name="robots" content="noindex"><title>Share card</title>
 <style>
-@font-face { font-family: "Newsreader"; src: url("/assets/fonts/newsreader.woff2") format("woff2"); font-weight: 200 800; }
-@font-face { font-family: "Inter"; src: url("/assets/fonts/inter.woff2") format("woff2"); font-weight: 100 900; }
-@font-face { font-family: "Amiri Name"; src: url("/assets/fonts/amiri-name.woff2") format("woff2"); }
+@font-face { font-family: "Nunito"; src: url("/assets/fonts/nunito-latin.woff2") format("woff2"); font-weight: 200 1000; }
+@font-face { font-family: "Baloo Bhaijaan 2"; src: url("/assets/fonts/baloo-bhaijaan-2-arabic.woff2") format("woff2"); font-weight: 400 800; }
 html,body{margin:0}
-body{width:1200px;height:630px;background:#F4F6F5;color:#0F1A1C;font-family:"Inter",sans-serif;display:flex;flex-direction:column;justify-content:space-between;padding:64px 80px;box-sizing:border-box;-webkit-font-smoothing:antialiased}
-.top{display:flex;justify-content:space-between;font-size:24px;color:#55666A}
-h1{margin:0;font-family:"Newsreader",serif;font-weight:300;font-size:136px;line-height:.94;letter-spacing:-0.035em;display:grid;gap:.1em}
-h1 .ar{font-family:"Amiri Name",serif;font-size:.74em;line-height:1.3;letter-spacing:0;text-align:right;color:#0E6C7A}
-p{margin:0;font-family:"Newsreader",serif;font-weight:350;font-size:38px;letter-spacing:-0.01em}
+body{width:1200px;height:630px;background:#0D0E0D;color:#EEEFEB;font-family:"Nunito",sans-serif;display:flex;flex-direction:column;justify-content:center;gap:22px;padding:0 90px;box-sizing:border-box;-webkit-font-smoothing:antialiased}
+h1{margin:0;font-weight:900;font-size:112px;line-height:1;letter-spacing:-0.035em}
+.ar{font-family:"Baloo Bhaijaan 2",sans-serif;font-weight:800;font-size:80px;line-height:1.2;color:#6FD0DC}
+p{margin:10px 0 0;font-weight:700;font-size:36px;color:#9A9E97}
+.apps{position:absolute;right:90px;top:70px;display:flex;gap:14px}
+.apps img{width:64px;height:64px;border-radius:15px}
 </style></head>
-<body><div class="top"><span>Software engineer</span><span>Kuwait</span></div>
-<h1><span>Ahmad Almazeedi</span><span class="ar" lang="ar" dir="rtl">أحمد المزيدي</span></h1>
-<p>Useful and beautiful software, made for everyone.</p></body></html>
+<body>
+<div class="apps"><img src="/assets/icons/atmita.png"><img src="/assets/icons/haseba.png"><img src="/assets/icons/animath.png"><span style="font-size:58px;line-height:64px">🔢</span></div>
+<h1>Ahmad Almazeedi</h1>
+<div class="ar" lang="ar" dir="rtl" style="text-align:left">أحمد المزيدي</div>
+<p>Useful and beautiful software, made for everyone.</p>
+</body></html>
