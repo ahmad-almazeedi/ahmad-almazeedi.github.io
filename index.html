@@ -58,8 +58,6 @@ h1 .ar { font-family: "Baloo Bhaijaan 2", var(--font); font-weight: 800; font-si
 .tile { position: relative; display: grid; place-items: center; aspect-ratio: 5 / 4; border-radius: 2.25rem; overflow: hidden; background: var(--tile); isolation: isolate; }
 .tile .glow { position: absolute; inset: -30%; width: 160%; height: 160%; object-fit: cover; filter: blur(80px) saturate(2.2) brightness(var(--lift)); opacity: var(--glow); z-index: -1; }
 .tile .icon { width: 44%; height: auto; aspect-ratio: 1; border-radius: 23%; box-shadow: 0 0 0 1px rgba(255,255,255,.06), 0 40px 80px -30px rgba(0,0,0,.55); }
-.tile.emoji { background: radial-gradient(60% 70% at 50% 50%, rgba(56,132,255,var(--emoji-glow)), transparent 75%), var(--tile); }
-.tile.emoji .icon { width: auto; aspect-ratio: auto; border-radius: 0; box-shadow: none; font-size: clamp(6rem, 15vw, 12rem); line-height: 1; font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif; filter: drop-shadow(0 30px 40px rgba(0,0,0,.35)); }
 
 .about { display: grid; gap: 1rem; justify-items: start; }
 .meta { margin: 0; color: var(--soft); font-weight: 700; font-size: .9375rem; }
@@ -109,7 +107,7 @@ h1 .ar { font-family: "Baloo Bhaijaan 2", var(--font); font-weight: 800; font-si
       <li class="app fade" style="--i:3">
         <div class="tile"><img class="glow" src="/assets/icons/atmita.png" alt=""><img class="icon" src="/assets/icons/atmita.png" alt="" width="360" height="360"></div>
         <div class="about">
-          <p class="meta">Web</p>
+          <p class="meta">Web app</p>
           <h2>Atmita</h2>
           <p class="tag">Your personal AI agent.</p>
           <p class="brief">Tell it what you need in plain words. It works across your apps and the browser, keeps going while you’re away, and remembers what matters to you.</p>
@@ -119,7 +117,7 @@ h1 .ar { font-family: "Baloo Bhaijaan 2", var(--font); font-weight: 800; font-si
       <li class="app fade" style="--i:4">
         <div class="tile" style="--glow:.18"><img class="glow" src="/assets/icons/haseba.png" alt=""><img class="icon" src="/assets/icons/haseba.png" alt="" width="360" height="360"></div>
         <div class="about">
-          <p class="meta">iPhone · since 2016</p>
+          <p class="meta">iPhone app</p>
           <h2>Haseba</h2>
           <p class="tag">A calculator done right.</p>
           <p class="brief">Clean, fast and easy to read, with scientific functions, currencies and units, and ten themes. Downloaded 1.3 million times.</p>
@@ -129,7 +127,7 @@ h1 .ar { font-family: "Baloo Bhaijaan 2", var(--font); font-weight: 800; font-si
       <li class="app fade" style="--i:5">
         <div class="tile"><img class="glow" src="/assets/icons/animath.png" alt=""><img class="icon" src="/assets/icons/animath.png" alt="" width="360" height="360"></div>
         <div class="about">
-          <p class="meta">iPhone · since 2022</p>
+          <p class="meta">iPhone app</p>
           <h2>Animath</h2>
           <p class="tag">An AI tutor for algebra.</p>
           <p class="brief">Snap or type a problem and it walks you through every step, then quizzes you so it sticks. The solver engine is <a href="https://github.com/ahmad-almazeedi/AnimathSolver">open source</a>.</p>
@@ -137,9 +135,9 @@ h1 .ar { font-family: "Baloo Bhaijaan 2", var(--font); font-weight: 800; font-si
         </div>
       </li>
       <li class="app fade" style="--i:6">
-        <div class="tile emoji"><span class="icon" role="img" aria-label="">🔢</span></div>
+        <div class="tile"><img class="glow" src="/assets/icons/ilostcount.png" alt=""><img class="icon" src="/assets/icons/ilostcount.png" alt="" width="360" height="360"></div>
         <div class="about">
-          <p class="meta">Web · free</p>
+          <p class="meta">Web app</p>
           <h2>iLostCount</h2>
           <p class="tag">Count words, characters and AI tokens.</p>
           <p class="brief">Paste any text and the counts update as you type. It runs in your browser, with no signup and nothing sent anywhere.</p>
